@@ -142,6 +142,13 @@ register_button.place(x=150,y=535)
 
 
 
+
+
+
+
+
+
+
 conn.commit()
 conn.close()
 
