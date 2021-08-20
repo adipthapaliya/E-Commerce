@@ -44,6 +44,7 @@ def register():
         email_entry.delete(0,END)
         phoneno_entry.delete(0,END)
         password_entry.delete(0,END)
+
         
         
 
