@@ -44,7 +44,7 @@ def run_admin():
 
 def login():
 
-   conn=sqlite3.connect('register.db')
+   conn=sqlite3.connect('register.db')    
    c=conn.cursor()
 
    c.execute('SELECT 1 FROM login WHERE username = ? AND password = ?',(username_entry.get(),password_entry.get()))
