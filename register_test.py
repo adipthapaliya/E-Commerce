@@ -2,6 +2,7 @@ from tkinter import *
 from PIL import ImageTk,Image
 import sqlite3
 from tkinter import messagebox
+import subprocess
 
 root=Tk()
 root.title('Register')
@@ -26,6 +27,14 @@ c=conn.cursor()
 #         password String NOT NULL
 
 #         )""")
+def run_register():
+   root.destroy()
+   subprocess.call(["python","register_test.py"])
+
+def run_login():
+    root.destroy()
+    subprocess.call(["python","login_test.py"])
+
 
 def register():
     
@@ -39,14 +48,7 @@ def register():
 
         messagebox.showerror("Error","Username already exists")
         
-        name_entry.delete(0,END)
-        usernameR_entry.delete(0,END)
-        email_entry.delete(0,END)
-        phoneno_entry.delete(0,END)
-        password_entry.delete(0,END)
-
-        
-        
+        run_register()
 
         c.execute('SELECT 1 FROM login WHERE username = ?',(usernameR_entry.get(),))
 
@@ -73,7 +75,8 @@ def register():
 
     conn.commit()
     conn.close()
-
+    
+    run_login()
 
 
 
@@ -97,6 +100,8 @@ google_img=ImageTk.PhotoImage(google)
 twitter_img=ImageTk.PhotoImage(apple)
 
 #======Login text
+
+
 register_text_label=Label(root,text="CREATE ACCOUNT",font=(Canvas,25))
 register_text_label.place(x=55,y=15)
 
@@ -138,7 +143,6 @@ password_entry.place(x=4,y=495)
 
 register_button=Button(root,text="SIGN UP",font=Canvas,command=register)
 register_button.place(x=150,y=535)
-
 
 
 

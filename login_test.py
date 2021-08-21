@@ -2,8 +2,11 @@ from tkinter import *
 from PIL import ImageTk,Image
 import sqlite3
 from tkinter import messagebox
+import subprocess
 
 #============== Main Window ===============
+
+
 
 root=Tk()
 root.title("LOGIN")
@@ -26,6 +29,19 @@ c=conn.cursor()
 
 #         )""")
 
+def run_register():
+   root.destroy()
+   subprocess.call(["python","register_test.py"])
+
+def run_login():
+    root.destroy()
+    subprocess.call(["python","login_test.py"])
+
+def run_admin():
+   root.destroy()
+   subprocess.call(["python","admin.py"])
+   
+
 def login():
 
    conn=sqlite3.connect('register.db')
@@ -33,15 +49,22 @@ def login():
 
    c.execute('SELECT 1 FROM login WHERE username = ? AND password = ?',(username_entry.get(),password_entry.get()))
 
+
+
    while len(c.fetchall())==0:
+
       messagebox.showerror("Invalid","Invalid username or password")
 
-      username_entry.delete(0,END)
-      password_entry.delete(0,END)
+      run_login()
 
       c.execute('SELECT 1 FROM login WHERE username = ? AND password = ?',(username_entry.get(),password_entry.get()))
 
-   messagebox.showinfo("login","login successfully")
+   if username_entry.get()=="admin" and password_entry.get()=="admin":
+
+      run_admin()
+   
+   else:
+      messagebox.showinfo("login","login successfully")
 
 
 
@@ -95,7 +118,7 @@ twitter_button.place(x=100,y=420)
 or_register_label=Label(root,text="or register using")
 or_register_label.place(x=155,y=510)
 
-signup_button=Button(root,text="SIGN UP",font=Canvas)
+signup_button=Button(root,text="SIGN UP",font=Canvas,command=run_register)
 signup_button.place(x=150,y=535)
 
 
