@@ -5,10 +5,6 @@ from PIL import ImageTk,Image
 
 
 
-
-
-
-
 window = Tk()
 
 window.geometry("1000x690")
