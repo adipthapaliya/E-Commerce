@@ -40,6 +40,10 @@ def run_login():
 def run_admin():
    root.destroy()
    subprocess.call(["python","admin.py"])
+
+def open():
+   root.destroy()
+   subprocess.call(["python","home.py"])
    
 
 def login():
@@ -66,7 +70,7 @@ def login():
    else:
 
       messagebox.showinfo("login","login successfully")
-
+      open()
 
 
 #=============================================== GUI Of Login page =================================================================
@@ -76,14 +80,20 @@ def login():
 facebook=Image.open("facebook.png")
 google=Image.open("google.png")
 apple=Image.open("apple.png")
+loginimage=Image.open("login.png")
+signupimage=Image.open("signup.png")
 
 facebook=facebook.resize((190,40),Image.ANTIALIAS)
 google=google.resize((190,40),Image.ANTIALIAS)
 apple=apple.resize((190,40),Image.ANTIALIAS)
+loginimage=loginimage.resize((260,50),Image.ANTIALIAS)
+signupimage=signupimage.resize((260,50),Image.ANTIALIAS)
 
 facebook_img=ImageTk.PhotoImage(facebook)
 google_img=ImageTk.PhotoImage(google)
 twitter_img=ImageTk.PhotoImage(apple)
+login_img=ImageTk.PhotoImage(loginimage)
+signup_img=ImageTk.PhotoImage(signupimage)
 
 #======Login text
 login_text_label=Label(root,text="LOGIN",font=(Canvas,30))
@@ -102,8 +112,8 @@ password_entry.place(x=4,y=180)
 forget_password_button=Button(root,text="forget password ?",borderwidth=0,fg="green")
 forget_password_button.place(x=280,y=220)
 
-login_button=Button(root,text="Login",font=Canvas,command=login)
-login_button.place(x=150,y=250)
+login_button=Button(root,image=login_img,borderwidth=0,command=login)
+login_button.place(x=80,y=250)
 
 or_signup_label=Label(root,text="or sigh up using")
 or_signup_label.place(x=150,y=310)
@@ -116,10 +126,10 @@ twitter_button=Button(root,image=twitter_img,borderwidth=0)
 twitter_button.place(x=100,y=420)
 
 or_register_label=Label(root,text="or register using")
-or_register_label.place(x=155,y=510)
+or_register_label.place(x=155,y=500)
 
-signup_button=Button(root,text="SIGN UP",font=Canvas,command=run_register)
-signup_button.place(x=150,y=535)
+signup_button=Button(root,image=signup_img,borderwidth=0,command=run_register)
+signup_button.place(x=80,y=525)
 
 
 conn.commit()
