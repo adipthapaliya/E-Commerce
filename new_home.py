@@ -1,11 +1,5 @@
 from sqlite3.dbapi2 import converters
 from tkinter import *
-<<<<<<< HEAD
-from PIL import ImageTk,Image
-import tkinter as tk
-
-
-=======
 from PIL import Image,ImageTk
 import subprocess
 import sqlite3
@@ -57,9 +51,8 @@ search=search.resize((45,35),Image.ANTIALIAS)
 profile=profile.resize((30,30),Image.ANTIALIAS)
 contact=contact.resize((90,40),Image.ANTIALIAS)
 cart=cart.resize((30,30),Image.ANTIALIAS)
-
-offer=offer.resize((1530,500),Image.ANTIALIAS)
-offer1=offer1.resize((1530,500),Image.ANTIALIAS)
+offer=offer.resize((300,300),Image.ANTIALIAS)
+offer1=offer1.resize((300,300),Image.ANTIALIAS)
 
 logo_img=ImageTk.PhotoImage(logo)
 search_img=ImageTk.PhotoImage(search)
@@ -73,20 +66,13 @@ offer1_img=ImageTk.PhotoImage(offer1)
         #====================== random offer list===============================================
 
 offer_list=[offer_img,offer1_img]
->>>>>>> 8387c95e26be3e211609e916bad2bf918232405e
 
 
 logo_button=Button(root,image=logo_img,borderwidth=0)
 logo_button.place(x=0,y=0)
 
-<<<<<<< HEAD
-window.geometry("1000x690")
-window.configure(bg ="MAROON")
-
-=======
 search_entry=Entry(root,width=91,fg="black",justify="right",borderwidth=2,font="50")
 search_entry.place(x=320,y=0,height=50)
->>>>>>> 8387c95e26be3e211609e916bad2bf918232405e
 
 search_button=Button(root,image=search_img,borderwidth=0)
 search_button.place(x=1160,y=0)
@@ -126,16 +112,12 @@ profile_button.place(x=1500,y=0)
 
         #==================================Offer images==================
 
-<<<<<<< HEAD
-window.mainloop()
-=======
-offer_random=random.randint(0,1)
+offer_random=random.randint(0,2)
 offer_label=Label(root,image=offer_list[offer_random])
-offer_label.place(x=0,y=100)
+offer_label.place(x=0,y=150)
 
 
 conn.commit()
 conn.close()
 
 root.mainloop()
->>>>>>> 8387c95e26be3e211609e916bad2bf918232405e
