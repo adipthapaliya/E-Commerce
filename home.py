@@ -2,6 +2,8 @@
 
 from tkinter import *
 from PIL import ImageTk,Image
+import tkinter as tk
+
 
 
 
@@ -9,7 +11,7 @@ window = Tk()
 
 window.geometry("1000x690")
 window.configure(bg ="MAROON")
-window.resizable(0,0)
+
 
 # Following codes helps us to insert images
 image1=Image.open("messi.png")
@@ -100,10 +102,6 @@ mb3.menu.add_cascade(label="Cricket",menu=mb4)
 mb3.menu.add_separator()
 mb3.menu.add_cascade(label="Others")
 mb3.menu.add_separator()
-
-
-
-
 
 
 window.mainloop()
