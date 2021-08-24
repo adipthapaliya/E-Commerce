@@ -51,8 +51,9 @@ search=search.resize((45,35),Image.ANTIALIAS)
 profile=profile.resize((30,30),Image.ANTIALIAS)
 contact=contact.resize((90,40),Image.ANTIALIAS)
 cart=cart.resize((30,30),Image.ANTIALIAS)
-offer=offer.resize((300,300),Image.ANTIALIAS)
-offer1=offer1.resize((300,300),Image.ANTIALIAS)
+
+offer=offer.resize((1530,500),Image.ANTIALIAS)
+offer1=offer1.resize((1530,500),Image.ANTIALIAS)
 
 logo_img=ImageTk.PhotoImage(logo)
 search_img=ImageTk.PhotoImage(search)
@@ -112,9 +113,9 @@ profile_button.place(x=1500,y=0)
 
         #==================================Offer images==================
 
-offer_random=random.randint(0,2)
-offer_label=Label(root,img=offer_list[offer_random])
-offer_label.place(x=0,y=150)
+offer_random=random.randint(0,1)
+offer_label=Label(root,image=offer_list[offer_random])
+offer_label.place(x=0,y=100)
 
 
 conn.commit()
