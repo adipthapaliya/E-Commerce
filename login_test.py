@@ -43,7 +43,7 @@ def run_admin():
 
 def open():
    root.destroy()
-   subprocess.call(["python","home.py"])
+   subprocess.call(["python","new_home.py"])
    
 
 def login():
