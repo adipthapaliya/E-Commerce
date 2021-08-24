@@ -1,111 +1,123 @@
-'''so,this terminal has a codes that will make a window for main menu and other options'''
-
+from sqlite3.dbapi2 import converters
 from tkinter import *
-from PIL import ImageTk,Image
+from PIL import Image,ImageTk
+import subprocess
+import sqlite3
+import random
+
+
+root=Tk()
+root.title("SOD")
+# root.attributes("-fullscreen", True)
+root.state("zoomed")
+root.resizable(False,False)
+
+#=====================================Database===========================================================================
+conn=sqlite3.connect('register.db')
+
+c=conn.cursor()
+
+        #======================table====================
+
+# c.execute(""" CREATE TABLE login(
+        
+#         name String NOT NULL,
+#         username String PRIMARY KEY,
+#         email String NOT NULL,
+#         phoneno Integer NOT NULL,
+#         password String NOT NULL
+
+#         )""")
+
+def run_login():
+    root.destroy()
+    subprocess.call(["python","login.py"])
+
+#============================================GUI=============================================================
+
+       #=======================================Images====================================
+logo=Image.open("sw.png")
+search=Image.open("search.png")
+profile=Image.open("profile.png")
+contact=Image.open("contact.png")
+cart=Image.open("cart.png")
+
+offer=Image.open("offer.png")
+offer1=Image.open("offer1.png")
+
+
+logo=logo.resize((300,50),Image.ANTIALIAS)
+search=search.resize((45,35),Image.ANTIALIAS)
+profile=profile.resize((30,30),Image.ANTIALIAS)
+contact=contact.resize((90,40),Image.ANTIALIAS)
+cart=cart.resize((30,30),Image.ANTIALIAS)
+offer=offer.resize((300,300),Image.ANTIALIAS)
+offer1=offer1.resize((300,300),Image.ANTIALIAS)
+
+logo_img=ImageTk.PhotoImage(logo)
+search_img=ImageTk.PhotoImage(search)
+profile_img=ImageTk.PhotoImage(profile)
+contact_img=ImageTk.PhotoImage(contact)
+cart_img=ImageTk.PhotoImage(cart)
+offer_img=ImageTk.PhotoImage(offer)
+offer1_img=ImageTk.PhotoImage(offer1)
+
+
+        #====================== random offer list===============================================
+
+offer_list=[offer_img,offer1_img]
+
+
+logo_button=Button(root,image=logo_img,borderwidth=0)
+logo_button.place(x=0,y=0)
+
+search_entry=Entry(root,width=91,fg="black",justify="right",borderwidth=2,font="50")
+search_entry.place(x=320,y=0,height=50)
+
+search_button=Button(root,image=search_img,borderwidth=0)
+search_button.place(x=1160,y=0)
+
+cart_button=Button(root,image=cart_img,borderwidth=0)
+cart_button.place(x=1250,y=0)
+
+contact_button=Button(root,image=contact_img,borderwidth=0)
+contact_button.place(x=1310,y=0)
+
+
+        #===============================label of username using database=========================
+
+
+welcome_label=Label(root,text="WELCOME!")
+welcome_label.place(x=1420,y=0)
+
+
+c.execute("SELECT *,oid FROM login")
+records=c.fetchone()
+username=" "
+
+
+for i in records:
+    username=str(records[1])
+
+
+username_label=Label(root,text=username)
+username_label.place(x=1420,y=15)
 
 
 
+#=========================================GUI==============================================================================
+profile_button=Button(root,image=profile_img,borderwidth=0,command=run_login)
+profile_button.place(x=1500,y=0)
 
 
-window = Tk()
+        #==================================Offer images==================
 
-window.geometry("1000x690")
-window.configure(bg ="MAROON")
-window.resizable(0,0)
-
-# Following codes helps us to insert images
-image1=Image.open("messi.png")
-image1=image1.resize((452,452),Image.ANTIALIAS) #this will fit images as size we needed
-myimg1=ImageTk.PhotoImage(image1)
-mylbl1=Label(image=myimg1)
-mylbl1.place(x=0,y=30)
-
-image2=Image.open("s.jpg")
-image2=image2.resize((220,226),Image.ANTIALIAS)
-myimg2=ImageTk.PhotoImage(image2)
-mylbl2=Label(image=myimg2)
-mylbl2.place(x=0,y=490)
-
-image3=Image.open("30.jpg")
-image3=image3.resize((226,226),Image.ANTIALIAS)
-myimg3=ImageTk.PhotoImage(image3)
-mylbl3=Label(image=myimg3)
-mylbl3.place(x=226,y=490)
+offer_random=random.randint(0,2)
+offer_label=Label(root,img=offer_list[offer_random])
+offer_label.place(x=0,y=150)
 
 
+conn.commit()
+conn.close()
 
-label_4 = Label(window, text="S.O.D E-COMMERCE",borderwidth=4,relief=GROOVE,width=20,font=("bold", 15),bg="BROWN",padx=114,pady=3)
-label_4.place(x=0,y=0)
-#canvas will create a border or line as a seperator on window
-mycanvas=Canvas(window,width=452,height=2,bg="black")
-mycanvas.place(x=0,y=485)
-
-mycanvas1=Canvas(window,width=556,height=1,bg="blue")
-mycanvas1.place(x=456,y=33)
-
-mycanvas2=Canvas(window,width=1,height=1000,bg="blue")
-mycanvas2.place(x=452,y=37)
-
-# this code will help us to create menubutton
-mb=Menubutton(window,text="MENU",relief=GROOVE,padx=25,pady=8,bg="blue")
-mb.place(x=453,y=20)
-mb.menu=Menu(mb,tearoff=0,bg="maroon",fg="white")
-mb["menu"]=mb.menu
-mb.menu.add_command(label="Balls")
-mb.menu.add_separator()
-mb.menu.add_command(label="Wears")
-mb.menu.add_separator()
-mb.menu.add_command(label="Report")
-mb.menu.add_separator()
-mb.menu.add_command(label="exit")
-mb.menu.add_separator()
-mb.pack()
-
-# mb2 is for submenu
-mb1=Menubutton(window,text="MENS",relief=GROOVE,padx=25,pady=8,bg="blue")
-mb1.place(x=700,y=0)
-mb1.menu=Menu(mb1,tearoff=0,bg="maroon",fg="white")
-mb1["menu"]=mb1.menu
-mb2=Menu(mb1,tearoff=0,bg="Maroon",fg="yellow")
-mb2.add_command(label="Wear")
-mb2.add_separator()
-mb2.add_command(label="Balls")
-
-
-
-mb1.menu.add_cascade(label="Football",menu=mb2)
-mb1.menu.add_separator()
-mb1.menu.add_cascade(label="Basketball",menu=mb2)
-mb1.menu.add_separator()
-mb1.menu.add_cascade(label="Cricket",menu=mb2)
-mb1.menu.add_separator()
-mb1.menu.add_cascade(label="Others") #cascade will make a options box for submenu
-mb1.menu.add_separator()
-
-# mb4 is for submenu
-mb3=Menubutton(window,text="Womens",relief=GROOVE,padx=25,pady=8,bg="blue") #relief is for frame border design
-mb3.place(x=900,y=0)
-mb3.menu=Menu(mb3,tearoff=0,bg="maroon",fg="white") #tearoff helps us for dropdown menubuttton
-mb3["menu"]=mb3.menu
-mb4=Menu(mb3,tearoff=0,bg="Maroon",fg="yellow")
-mb4.add_command(label="Wear")
-mb4.add_separator() #create lines between dropdown menubutton
-mb4.add_command(label="Balls")
-
-
-
-mb3.menu.add_cascade(label="Football",menu=mb4)
-mb3.menu.add_separator()
-mb3.menu.add_cascade(label="Basketball",menu=mb4)
-mb3.menu.add_separator()
-mb3.menu.add_cascade(label="Cricket",menu=mb4)
-mb3.menu.add_separator()
-mb3.menu.add_cascade(label="Others")
-mb3.menu.add_separator()
-
-
-
-
-
-
-window.mainloop()
+root.mainloop()

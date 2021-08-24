@@ -3,6 +3,7 @@ from tkinter import *
 from PIL import Image,ImageTk
 import subprocess
 import sqlite3
+import random
 
 
 root=Tk()
@@ -41,17 +42,30 @@ profile=Image.open("profile.png")
 contact=Image.open("contact.png")
 cart=Image.open("cart.png")
 
+offer=Image.open("offer.png")
+offer1=Image.open("offer1.png")
+
+
 logo=logo.resize((300,50),Image.ANTIALIAS)
 search=search.resize((45,35),Image.ANTIALIAS)
 profile=profile.resize((30,30),Image.ANTIALIAS)
 contact=contact.resize((90,40),Image.ANTIALIAS)
 cart=cart.resize((30,30),Image.ANTIALIAS)
+offer=offer.resize((300,300),Image.ANTIALIAS)
+offer1=offer1.resize((300,300),Image.ANTIALIAS)
 
 logo_img=ImageTk.PhotoImage(logo)
 search_img=ImageTk.PhotoImage(search)
 profile_img=ImageTk.PhotoImage(profile)
 contact_img=ImageTk.PhotoImage(contact)
 cart_img=ImageTk.PhotoImage(cart)
+offer_img=ImageTk.PhotoImage(offer)
+offer1_img=ImageTk.PhotoImage(offer1)
+
+
+        #====================== random offer list===============================================
+
+offer_list=[offer_img,offer1_img]
 
 
 logo_button=Button(root,image=logo_img,borderwidth=0)
@@ -94,6 +108,13 @@ username_label.place(x=1420,y=15)
 #=========================================GUI==============================================================================
 profile_button=Button(root,image=profile_img,borderwidth=0,command=run_login)
 profile_button.place(x=1500,y=0)
+
+
+        #==================================Offer images==================
+
+offer_random=random.randint(0,2)
+offer_label=Label(root,img=offer_list[offer_random])
+offer_label.place(x=0,y=150)
 
 
 conn.commit()
