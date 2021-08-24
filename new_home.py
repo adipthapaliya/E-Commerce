@@ -118,6 +118,7 @@ offer_label=Label(root,image=offer_list[offer_random])
 offer_label.place(x=0,y=100)
 
 
+
 conn.commit()
 conn.close()
 

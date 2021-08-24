@@ -1,4 +1,4 @@
-from sqlite3.dbapi2 import converters
+
 from tkinter import *
 from PIL import Image,ImageTk
 import subprocess
@@ -75,6 +75,7 @@ logo_button.place(x=0,y=0)
 search_entry=Entry(root,width=91,fg="black",justify="right",borderwidth=2,font="50")
 search_entry.place(x=320,y=0,height=50)
 
+
 search_button=Button(root,image=search_img,borderwidth=0)
 search_button.place(x=1160,y=0)
 
@@ -122,3 +123,4 @@ conn.commit()
 conn.close()
 
 root.mainloop()
+
