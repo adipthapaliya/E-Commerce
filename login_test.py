@@ -3,7 +3,7 @@ from PIL import ImageTk,Image
 import sqlite3
 from tkinter import messagebox
 import subprocess
-
+from subprocess import Popen, PIPE
 #============== Main Window ===============
 
 
@@ -41,9 +41,9 @@ def run_admin():
    root.destroy()
    subprocess.call(["python","admin.py"])
 
-def open():
+def open(user):
    root.destroy()
-   subprocess.call(["python","new_home.py"])
+   subprocess.call(["python","new_home.py", "--user", user[1]])
    
 
 def login():
@@ -51,11 +51,12 @@ def login():
    conn=sqlite3.connect('register.db')    
    c=conn.cursor()
 
-   c.execute('SELECT 1 FROM login WHERE username = ? AND password = ?',(username_entry.get(),password_entry.get()))
+   c.execute('SELECT * FROM login WHERE username = ? AND password = ?',(username_entry.get(),password_entry.get()))
+   # print(c.fetchone())
+   print(username_entry.get())
+   user = c.fetchone()
 
-
-
-   while len(c.fetchall())==0:
+   while len(user)==0:
 
       messagebox.showerror("Invalid","Invalid username or password")
 
@@ -68,9 +69,8 @@ def login():
       run_admin()
    
    else:
-
-      messagebox.showinfo("login","login successfully")
-      open()
+      
+      open(user)
 
 
 #=============================================== GUI Of Login page =================================================================
