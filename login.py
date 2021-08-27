@@ -3,7 +3,7 @@ from PIL import ImageTk,Image
 import sqlite3
 from tkinter import messagebox
 import subprocess
-
+from subprocess import Popen, PIPE
 #============== Main Window ===============
 
 
@@ -28,9 +28,6 @@ c=conn.cursor()
 #         password String NOT NULL
 
 #         )""")
-def run_admin():
-   root.destroy()
-   subprocess.call(["python","admin.py"])
 
 def run_register():
    root.destroy()
@@ -39,16 +36,28 @@ def run_register():
 def run_login():
     root.destroy()
     subprocess.call(["python","login.py"])
+
+def run_admin():
+   root.destroy()
+   subprocess.call(["python","admin.py"])
+
+def open(user):
+   root.destroy()
+   subprocess.call(["python","home.py", "--user", user[1]])
    
 
 def login():
 
-   conn=sqlite3.connect('register.db')
+   conn=sqlite3.connect('register.db')    
    c=conn.cursor()
 
-   c.execute('SELECT 1 FROM login WHERE username = ? AND password = ?',(username_entry.get(),password_entry.get()))
+   c.execute('SELECT * FROM login WHERE username = ? AND password = ?',(username_entry.get(),password_entry.get()))
+   # print(c.fetchone())
+   print(username_entry.get())
+   user = c.fetchone()
 
-   while len(c.fetchall())==0:
+   while len(user)==0:
+
       messagebox.showerror("Invalid","Invalid username or password")
 
       run_login()
@@ -60,27 +69,31 @@ def login():
       run_admin()
    
    else:
-      messagebox.showinfo("login","login successfully")
-
-
-
+      
+      open(user)
 
 
 #=============================================== GUI Of Login page =================================================================
 
 #===========Image=======
 
-facebook=Image.open("facebook.png")
-google=Image.open("google.png")
-apple=Image.open("apple.png")
+facebook=Image.open("Login/facebook.png")
+google=Image.open("Login/google.png")
+apple=Image.open("Login/apple.png")
+loginimage=Image.open("Login/login.png")
+signupimage=Image.open("Login/signup.png")
 
 facebook=facebook.resize((190,40),Image.ANTIALIAS)
 google=google.resize((190,40),Image.ANTIALIAS)
 apple=apple.resize((190,40),Image.ANTIALIAS)
+loginimage=loginimage.resize((260,50),Image.ANTIALIAS)
+signupimage=signupimage.resize((260,50),Image.ANTIALIAS)
 
 facebook_img=ImageTk.PhotoImage(facebook)
 google_img=ImageTk.PhotoImage(google)
 twitter_img=ImageTk.PhotoImage(apple)
+login_img=ImageTk.PhotoImage(loginimage)
+signup_img=ImageTk.PhotoImage(signupimage)
 
 #======Login text
 login_text_label=Label(root,text="LOGIN",font=(Canvas,30))
@@ -99,8 +112,8 @@ password_entry.place(x=4,y=180)
 forget_password_button=Button(root,text="forget password ?",borderwidth=0,fg="green")
 forget_password_button.place(x=280,y=220)
 
-login_button=Button(root,text="Login",font=Canvas,command=login)
-login_button.place(x=150,y=250)
+login_button=Button(root,image=login_img,borderwidth=0,command=login)
+login_button.place(x=80,y=250)
 
 or_signup_label=Label(root,text="or sigh up using")
 or_signup_label.place(x=150,y=310)
@@ -113,10 +126,10 @@ twitter_button=Button(root,image=twitter_img,borderwidth=0)
 twitter_button.place(x=100,y=420)
 
 or_register_label=Label(root,text="or register using")
-or_register_label.place(x=155,y=510)
+or_register_label.place(x=155,y=500)
 
-signup_button=Button(root,text="SIGN UP",font=Canvas,command=run_register)
-signup_button.place(x=150,y=535)
+signup_button=Button(root,image=signup_img,borderwidth=0,command=run_register)
+signup_button.place(x=80,y=525)
 
 
 conn.commit()

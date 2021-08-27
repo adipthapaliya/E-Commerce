@@ -89,10 +89,10 @@ def register():
 
 #===========Image=======
 
-facebook=Image.open("facebook.png")
-google=Image.open("google.png")
-apple=Image.open("apple.png")
-signupimage=Image.open("signup.png")
+facebook=Image.open("Login/facebook.png")
+google=Image.open("Login/google.png")
+apple=Image.open("Login/apple.png")
+signupimage=Image.open("Login/signup.png")
 
 facebook=facebook.resize((190,40),Image.ANTIALIAS)
 google=google.resize((190,40),Image.ANTIALIAS)

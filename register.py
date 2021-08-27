@@ -29,11 +29,13 @@ c=conn.cursor()
 #         )""")
 def run_register():
    root.destroy()
-   subprocess.call(["python","register.py"])
+   subprocess.call(["python","register_test.py"])
+
+
 
 def run_login():
     root.destroy()
-    subprocess.call(["python","login.py"])
+    subprocess.call(["python","login_test.py"])
 
 
 def register():
@@ -87,17 +89,20 @@ def register():
 
 #===========Image=======
 
-facebook=Image.open("facebook.png")
-google=Image.open("google.png")
-apple=Image.open("apple.png")
+facebook=Image.open("Login/facebook.png")
+google=Image.open("Login/google.png")
+apple=Image.open("Login/apple.png")
+signupimage=Image.open("Login/signup.png")
 
 facebook=facebook.resize((190,40),Image.ANTIALIAS)
 google=google.resize((190,40),Image.ANTIALIAS)
 apple=apple.resize((190,40),Image.ANTIALIAS)
+signupimage=signupimage.resize((260,50),Image.ANTIALIAS)
 
 facebook_img=ImageTk.PhotoImage(facebook)
 google_img=ImageTk.PhotoImage(google)
 twitter_img=ImageTk.PhotoImage(apple)
+signup_img=ImageTk.PhotoImage(signupimage)
 
 #======Login text
 
@@ -141,8 +146,10 @@ password_entry=Entry(root,font=Canvas,bg="#E1D9D1",width=35)
 password_entry.place(x=4,y=495)
 
 
-register_button=Button(root,text="SIGN UP",font=Canvas,command=register)
-register_button.place(x=150,y=535)
+register_button=Button(root,image=signup_img,borderwidth=0,command=register)
+register_button.place(x=80,y=530)
+
+
 
 
 
