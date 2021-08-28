@@ -37,9 +37,10 @@ def run_login():
 
 
 
+
         #--------------   Product Details Function ----------------------
 
-def product_mainframe(product_image):
+def details_mainframe(product_image):
 
         global main_frame
 
@@ -78,7 +79,7 @@ def description(product_image):
     for ele in main_frame.winfo_children():
         ele.destroy()
 
-    product_mainframe(product_image)
+    details_mainframe(product_image)
 
 
 
@@ -92,17 +93,59 @@ def back_home():
         ele.destroy()
 
 
-    run_mainframe()
+    mainframe()
 
 
 
-        #-----------------------     Cart     ---------------------------
+        #-----------------------     Cart     --------------------------- 
 
+
+                #------------------      adding cart function        ----------------- 
 def add_to_cart():
         pass
 
+
+
+
+                #-------------------    for your prodcut cart     --------------------------------
+
+                
 def cart():
-        pass
+
+        global main_frame
+
+        main_frame = Frame(root)
+        main_frame.place(x=0, y=90)
+
+        my_canvas = Canvas(main_frame, width=1500, height=740)
+        my_canvas.pack(side=LEFT, fill=BOTH)
+
+        my_scrollbar = ttk.Scrollbar(main_frame, orient=VERTICAL, command=my_canvas.yview)
+        my_scrollbar.pack(side=RIGHT, padx=5, fill=Y)
+
+        my_canvas.configure(yscrollcommand=my_scrollbar.set)
+        my_canvas.bind('<Configure>', lambda e: my_canvas.configure(scrollregion=my_canvas.bbox("all")))        
+
+        second_frame = Frame(my_canvas, width=1500, height=740)
+
+
+        my_canvas.create_window((0, 0), window=second_frame)
+
+
+
+        add_to_cart=Button(second_frame,text="Add  to cart")
+        add_to_cart.grid(row=1,column=1)
+
+
+
+
+def cart_frame():
+    for ele in main_frame.winfo_children():
+        ele.destroy()
+
+    cart()
+
+
 
 
 
@@ -234,7 +277,7 @@ search_entry.place(x=320,y=0,height=50)
 search_button=Button(root,image=search_img,borderwidth=0)
 search_button.place(x=1160,y=0)
 
-cart_button=Button(root,image=cart_img,borderwidth=0,command=cart)
+cart_button=Button(root,image=cart_img,borderwidth=0,command=cart_frame)
 cart_button.place(x=1250,y=0)
 
 contact_button=Button(root,image=contact_img,borderwidth=0)
@@ -318,7 +361,7 @@ mb6.place(x=2, y=52)
       
         #-------------------    Function for Home Page       ---------------------------------
 
-def run_mainframe():
+def mainframe():
 
         global main_frame
 
@@ -419,7 +462,7 @@ def run_mainframe():
 
 
 
-run_mainframe()
+mainframe()
 
 
 
