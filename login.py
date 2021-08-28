@@ -132,6 +132,8 @@ signup_button=Button(root,image=signup_img,borderwidth=0,command=run_register)
 signup_button.place(x=80,y=525)
 
 
+
+
 conn.commit()
 conn.close()
 root.mainloop()

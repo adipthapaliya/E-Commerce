@@ -14,13 +14,7 @@ root.state("zoomed")
 root.resizable(False,False)
 root.config(bg="#ffffff")
 
-#===============username
 
-parser = ArgumentParser()
-parser.add_argument("-u", "--user")
-
-args = vars(parser.parse_args())
-user = args['user']
 
 
 #=====================================Database===========================================================================
@@ -40,9 +34,25 @@ c=conn.cursor()
 
 #         )""")
 
+        #==============for login
 def run_login():
     root.destroy()
     subprocess.call(["python","login.py"])
+
+
+
+
+def description(product_image):
+        #============= clear the screen
+    for ele in root.winfo_children():
+        ele.destroy()      
+
+#=======================padding username from login=
+parser = ArgumentParser()
+parser.add_argument("-u", "--user")
+
+args = vars(parser.parse_args())
+user = args['user']
 
 #============================================GUI=============================================================
 
@@ -72,7 +82,7 @@ cart_img=ImageTk.PhotoImage(cart)
 
 
 
-        #====================== random offer list===============================================
+        
 
 
 
@@ -117,6 +127,7 @@ profile_button=Button(root,image=profile_img,borderwidth=0,command=run_login)
 profile_button.place(x=1500,y=0)
 
                 #=======================================Menu  BUttons ====================================
+
 
 mb1 = Menubutton(root, text="MENS       ▼", relief=GROOVE, padx=25, pady=8, bg="black", fg="white")
 mb1.place(x=320, y=50)
@@ -229,33 +240,64 @@ offer_label=Label(second_frame,image=offer_list[offer_random])
 offer_label.grid(row=0,column=0,columnspan=3)
 
 
-b1 = Button(second_frame, image=F1, bg="white", borderwidth=0)
+b1 = Button(second_frame, image=F1, bg="white", borderwidth=0,command=lambda : description(F1))
 b1.grid(row=1,column=0)
-l1=Label(second_frame,text="Rs 1150")
-l1.grid(row=2,column=0)
+price=Label(second_frame,text="Rs 1150")
+price.grid(row=2,column=0)
 l11=Label(second_frame,text="Adidas Real Madrid Jersy(White)")
 l11.grid(row=3,column=0)
 
 b2 = Button(second_frame, image=F2, bg="white", relief=GROOVE,borderwidth=0)
 b2.grid(row=1,column=1)
-l2=Label(second_frame,text="Rs 1150")
-l2.grid(row=2,column=1)
+price=Label(second_frame,text="Rs 1150")
+price.grid(row=2,column=1)
 l22=Label(second_frame,text="Nike PSG Jersy(Blue)")
 l22.grid(row=3,column=1)
 
 b3 = Button(second_frame, image=F3, bg="white", relief=GROOVE,borderwidth=0)
 b3.grid(row=1,column=2)
-l2=Label(second_frame,text="Rs 5000")
-l2.grid(row=2,column=2)
-l22=Label(second_frame,text="Nike Messi PSG Jersy(Blue)")
-l22.grid(row=3,column=2)
+price=Label(second_frame,text="Rs 5000")
+price.grid(row=2,column=2)
+l33=Label(second_frame,text="Nike Messi PSG Jersy(Blue)")
+l33.grid(row=3,column=2)
 
 
-# b4 = Button(second_frame, image=F4, bg="white", relief=GROOVE,borderwidth=0).grid(row=2,column=0)
-# b5 = Button(second_frame, image=F5, bg="white", relief=GROOVE,borderwidth=0).grid(row=2,column=1)
-# b6 = Button(second_frame, image=F6, bg="white", relief=GROOVE,borderwidth=0).grid(row=2,column=2)
-# b7 = Button(second_frame, image=B1, bg="white", relief=GROOVE,borderwidth=0).grid(row=3,column=0)
-# b8 = Button(second_frame, image=B2, bg="white", relief=GROOVE,borderwidth=0).grid(row=3,column=1)
+b4 = Button(second_frame, image=F4, bg="white", relief=GROOVE,borderwidth=0)
+b4.grid(row=4,column=0)
+price=Label(second_frame,text="Rs 5000")
+price.grid(row=5,column=0)
+l44=Label(second_frame,text="Nike Messi PSG Jersy(Blue)")
+l44.grid(row=6,column=0)
+
+
+b5 = Button(second_frame, image=F5, bg="white", relief=GROOVE,borderwidth=0)
+b5.grid(row=4,column=1)
+price=Label(second_frame,text="Rs 5000")
+price.grid(row=5,column=1)
+l55=Label(second_frame,text="Nike Messi PSG Jersy(Blue)")
+l55.grid(row=6,column=1)
+
+
+b6 = Button(second_frame, image=F6, bg="white", relief=GROOVE,borderwidth=0)
+b6.grid(row=4,column=2)
+price=Label(second_frame,text="Rs 5000")
+price.grid(row=5,column=2)
+l44=Label(second_frame,text="Nike Messi PSG Jersy(Blue)")
+l44.grid(row=6,column=2)
+
+b7 = Button(second_frame, image=B1, bg="white", relief=GROOVE,borderwidth=0)
+b7.grid(row=7,column=0)
+price=Label(second_frame,text="Rs 5000")
+price.grid(row=8,column=0)
+l44=Label(second_frame,text="Nike Messi PSG Jersy(Blue)")
+l44.grid(row=9,column=0)
+
+b8 = Button(second_frame, image=B2, bg="white", relief=GROOVE,borderwidth=0)
+b8.grid(row=7,column=1)
+price=Label(second_frame,text="Rs 5000")
+price.grid(row=8,column=1)
+l44=Label(second_frame,text="Nike Messi PSG Jersy(Blue)")
+l44.grid(row=9,column=1)
 
 
 conn.commit()
