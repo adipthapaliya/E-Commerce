@@ -351,7 +351,7 @@ mb3.menu.add_cascade(label="Basketball", menu=mb4, activebackground="black", act
 mb5 = Button(root, text="⚽    Balls    ⚽", relief=GROOVE, padx=25, pady=4, bg="black", fg="white")
 mb5.place(x=700, y=50)
 
-mb6 = Button(root, text="⌂ HOME", relief=GROOVE, padx=25, pady=4, bg="black", fg="white", )
+mb6 = Button(root, text="⌂ HOME", relief=GROOVE, padx=25, pady=4, bg="black", fg="white",command=back_home )
 mb6.place(x=2, y=52)
 
         
