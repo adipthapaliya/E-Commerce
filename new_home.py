@@ -403,12 +403,14 @@ def mainframe():
         l11=Label(second_frame,text="Adidas Real Madrid Jersy(White)")
         l11.grid(row=3,column=0)
 
+
         b2 = Button(second_frame, image=F2, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(F2))
         b2.grid(row=1,column=1)
         price=Label(second_frame,text="Rs 1150")
         price.grid(row=2,column=1)
         l22=Label(second_frame,text="Nike PSG Jersy(Blue)")
         l22.grid(row=3,column=1)
+
 
         b3 = Button(second_frame, image=F3, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(F3))
         b3.grid(row=1,column=2)
@@ -441,12 +443,14 @@ def mainframe():
         l44=Label(second_frame,text="Nike Messi PSG Jersy(Blue)")
         l44.grid(row=6,column=2)
 
+
         b7 = Button(second_frame, image=B1, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(B1))
         b7.grid(row=7,column=0)
         price=Label(second_frame,text="Rs 5000")
         price.grid(row=8,column=0)
         l44=Label(second_frame,text="Nike Messi PSG Jersy(Blue)")
         l44.grid(row=9,column=0)
+
 
         b8 = Button(second_frame, image=B2, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(B2))
         b8.grid(row=7,column=1)
