@@ -39,6 +39,9 @@ def sec_window ():
         root.destroy
         subprocess.call(["python","command.py"])
 
+def g_window ():
+        root.destroy
+        subprocess.call(["python","girls.py"])
 
 
 
@@ -355,7 +358,7 @@ mb3.place(x=450, y=50)
 mb3.menu = Menu(mb3, tearoff=0, bg="white", fg="black")
 mb3["menu"] = mb3.menu
 mb4 = Menu(mb3, tearoff=0, bg="white", fg="black")
-mb4.add_command(label="Wear", activebackground="black", activeforeground="white")
+mb4.add_command(label="Wear", activebackground="black", activeforeground="white",command=g_window)
 mb4.add_separator()
 mb4.add_command(label="Balls", activebackground="black", activeforeground="white")
 
