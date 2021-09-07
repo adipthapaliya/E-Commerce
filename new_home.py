@@ -43,6 +43,21 @@ def g_window ():
         root.destroy
         subprocess.call(["python","girls.py"])
 
+def b1_window ():
+        root.destroy
+        subprocess.call(["python","Fballs.py"])
+
+
+
+
+def b2_window ():
+        root.destroy
+        subprocess.call(["python","Bballs.py"])
+
+
+def bb_window ():
+       root.destroy
+       subprocess.call(["python","BB.py"])
 
 
         #--------------   Product Details Function ----------------------
@@ -345,29 +360,43 @@ mb1["menu"] = mb1.menu
 mb2 = Menu(mb1, tearoff=0, bg="white", fg="black")
 mb2.add_command(label="Wear", activebackground="black", activeforeground="white",command=sec_window)
 mb2.add_separator()
-mb2.add_command(label="Balls", activebackground="black", activeforeground="white")
+mb2.add_command(label="Balls", activebackground="black", activeforeground="white",command=b1_window)
+
+mb0 = Menu(mb1, tearoff=0, bg="white", fg="black")
+mb0.add_command(label="Wear", activebackground="black", activeforeground="white",command=bb_window)
+mb0.add_separator()
+mb0.add_command(label="Balls", activebackground="black", activeforeground="white",command=b2_window)
+
+
 
 mb1.menu.add_cascade(label="Football", menu=mb2, activebackground="black", activeforeground="white")
 mb1.menu.add_separator()
-mb1.menu.add_cascade(label="Basketball", menu=mb2, activebackground="black", activeforeground="white")
+mb1.menu.add_cascade(label="Basketball", menu=mb0, activebackground="black", activeforeground="white")
 
 
 
 mb3 = Menubutton(root, text="WOMENS       ▼", relief=GROOVE, padx=25, pady=8, bg="black", fg="white")
-mb3.place(x=450, y=50)
+mb3.place(x=650, y=50)
 mb3.menu = Menu(mb3, tearoff=0, bg="white", fg="black")
 mb3["menu"] = mb3.menu
 mb4 = Menu(mb3, tearoff=0, bg="white", fg="black")
 mb4.add_command(label="Wear", activebackground="black", activeforeground="white",command=g_window)
 mb4.add_separator()
-mb4.add_command(label="Balls", activebackground="black", activeforeground="white")
+mb4.add_command(label="Balls", activebackground="black", activeforeground="white",command=b1_window)
+
+
+mb7 = Menu(mb3, tearoff=0, bg="white", fg="black")
+mb7.add_command(label="Wear", activebackground="black", activeforeground="white",command=bb_window)
+mb7.add_separator()
+mb7.add_command(label="Balls", activebackground="black", activeforeground="white",command=b2_window)
+
 
 mb3.menu.add_cascade(label="Football", menu=mb4, activebackground="black", activeforeground="white")
 mb3.menu.add_separator()
-mb3.menu.add_cascade(label="Basketball", menu=mb4, activebackground="black", activeforeground="white")
+mb3.menu.add_cascade(label="Basketball", menu=mb7, activebackground="black", activeforeground="white")
 
-mb5 = Button(root, text="⚽    Balls    ⚽", relief=GROOVE, padx=25, pady=4, bg="black", fg="white")
-mb5.place(x=700, y=50)
+mb5 = Button(root, text="⚽    Balls    ⚽", relief=GROOVE, padx=25, pady=4, bg="black", fg="white",command=b1_window)
+mb5.place(x=955, y=50)
 
 mb6 = Button(root, text="⌂ HOME", relief=GROOVE, padx=25, pady=4, bg="black", fg="white",command=back_home )
 mb6.place(x=2, y=52)
