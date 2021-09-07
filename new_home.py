@@ -10,6 +10,7 @@ from argparse import ArgumentParser
 
 
 
+
  #===========================================     Main Window         =========================================================
 
 root=Tk()
@@ -34,6 +35,9 @@ def run_login():
     root.destroy()
     subprocess.call(["python","login.py"])
 
+def sec_window ():
+        root.destroy
+        subprocess.call(["python","command.py"])
 
 
 
@@ -65,8 +69,16 @@ def details_mainframe(product_image):
         b1 = Button(second_frame, image=product_image, bg="white", borderwidth=0)
         b1.grid(row=1,column=0)
 
-        add_to_cart=Button(second_frame,text="Add  to cart")
+        add_to_cart=Button(second_frame,text="Add  to cart",bg="black",fg="white")
         add_to_cart.grid(row=1,column=1)
+        Large=Button(second_frame,text="Large",bg="black",fg="white ")
+        Large.grid(row=2,column=6)
+        # Medium=Button(second_frame,text="Medium",bg="black",fg="white ")
+        # Medium.grid(row=0,column=2)
+        # small=Button(second_frame,text="small",bg="black",fg="white ")
+        # small.grid(row=0,column=3)
+
+
 
 
 
@@ -133,12 +145,9 @@ def cart():
 
 
 
-        add_to_cart=Button(second_frame,text="Add  to cart")
-        add_to_cart.grid(row=1,column=1)
-
-
-
-
+        # add_to_cart=Button(second_frame,text="Add  to cart")
+        # add_to_cart.grid(row=1,column=1)
+        
 def cart_frame():
     for ele in main_frame.winfo_children():
         ele.destroy()
@@ -220,14 +229,17 @@ cart_img=ImageTk.PhotoImage(cart)
 
 offer=Image.open("Dress\offer.png")
 offer1=Image.open("Dress\offer1.png")
+offer2=Image.open("Dress\offer2.jpg")
 
 offer=offer.resize((1500,500),Image.ANTIALIAS)
 offer1=offer1.resize((1500,500),Image.ANTIALIAS)
+offer2=offer2.resize((1500,500),Image.ANTIALIAS)
 
 offer_img=ImageTk.PhotoImage(offer)
 offer1_img=ImageTk.PhotoImage(offer1)
+offer2_img=ImageTk.PhotoImage(offer2)
 
-offer_list=[offer_img,offer1_img]
+offer_list=[offer_img,offer1_img,offer2_img]
 
 
 
@@ -240,6 +252,7 @@ F3 = Image.open("Dress\F3.png")
 F4 = Image.open("Dress\F4.jpg")
 F5 = Image.open("Dress\F5.jpg")
 F6 = Image.open("Dress\F6.jpg")
+F7 = Image.open("Dress\F7.png")
 B1 = Image.open("Dress\B1.jpg")
 B2 = Image.open("Dress\B2.jpg")
 
@@ -250,6 +263,7 @@ F3 = F3.resize((400, 400), Image.ANTIALIAS)
 F4 = F4.resize((400, 400), Image.ANTIALIAS)
 F5 = F5.resize((400, 400), Image.ANTIALIAS)
 F6 = F6.resize((400, 400), Image.ANTIALIAS)
+F7 = F7.resize((400, 400), Image.ANTIALIAS)
 B1 = B1.resize((400, 400), Image.ANTIALIAS)
 B2 = B2.resize((400, 400), Image.ANTIALIAS)
 
@@ -259,6 +273,7 @@ F3 = ImageTk.PhotoImage(F3)
 F4 = ImageTk.PhotoImage(F4)
 F5 = ImageTk.PhotoImage(F5)
 F6 = ImageTk.PhotoImage(F6)
+F7 = ImageTk.PhotoImage(F7)
 B1 = ImageTk.PhotoImage(B1)
 B2= ImageTk.PhotoImage(B2)
 
@@ -271,7 +286,7 @@ B2= ImageTk.PhotoImage(B2)
 logo_button=Button(root,image=logo_img,borderwidth=0,command=back_home)
 logo_button.place(x=0,y=0)
 
-search_entry=Entry(root,width=91,fg="black",justify="right",borderwidth=2,font="50")
+search_entry=Entry(root,width=70,fg="black",justify="left",borderwidth=2,font="50")
 search_entry.place(x=320,y=0,height=50)
 
 search_button=Button(root,image=search_img,borderwidth=0)
@@ -325,7 +340,7 @@ mb1.place(x=320, y=50)
 mb1.menu = Menu(mb1, tearoff=0, bg="white", fg="black")
 mb1["menu"] = mb1.menu
 mb2 = Menu(mb1, tearoff=0, bg="white", fg="black")
-mb2.add_command(label="Wear", activebackground="black", activeforeground="white")
+mb2.add_command(label="Wear", activebackground="black", activeforeground="white",command=sec_window)
 mb2.add_separator()
 mb2.add_command(label="Balls", activebackground="black", activeforeground="white")
 
@@ -383,7 +398,7 @@ def mainframe():
         second_frame = Frame(my_canvas, width=1500, height=740)
 
 
-        my_canvas.create_window((0, 0), window=second_frame)
+        my_canvas.create_window((0,880), window=second_frame)
 
 
 
@@ -391,7 +406,7 @@ def mainframe():
                 #------------------------   All product Labeling  --------------------------------
 
 
-        offer_random=random.randint(0,1)
+        offer_random=random.randint(0,2)
         offer_label=Label(second_frame,image=offer_list[offer_random])
         offer_label.grid(row=0,column=0,columnspan=3)
 
@@ -416,7 +431,7 @@ def mainframe():
         b3.grid(row=1,column=2)
         price=Label(second_frame,text="Rs 5000")
         price.grid(row=2,column=2)
-        l33=Label(second_frame,text="Nike Messi PSG Jersy(Blue)")
+        l33=Label(second_frame,text="Jordan Messi PSG Jersy(Blue)")
         l33.grid(row=3,column=2)
 
 
@@ -424,7 +439,7 @@ def mainframe():
         b4.grid(row=4,column=0)
         price=Label(second_frame,text="Rs 5000")
         price.grid(row=5,column=0)
-        l44=Label(second_frame,text="Nike Messi PSG Jersy(Blue)")
+        l44=Label(second_frame,text="Addidas Manchester United Jersy(Red)")
         l44.grid(row=6,column=0)
 
 
@@ -432,7 +447,7 @@ def mainframe():
         b5.grid(row=4,column=1)
         price=Label(second_frame,text="Rs 5000")
         price.grid(row=5,column=1)
-        l55=Label(second_frame,text="Nike Messi PSG Jersy(Blue)")
+        l55=Label(second_frame,text="Addidas Modrić Real Madrid Jersy(Pink)")
         l55.grid(row=6,column=1)
 
 
@@ -440,7 +455,7 @@ def mainframe():
         b6.grid(row=4,column=2)
         price=Label(second_frame,text="Rs 5000")
         price.grid(row=5,column=2)
-        l44=Label(second_frame,text="Nike Messi PSG Jersy(Blue)")
+        l44=Label(second_frame,text="Addidas Bayern Munich Jersy(Red)")
         l44.grid(row=6,column=2)
 
 
@@ -448,7 +463,7 @@ def mainframe():
         b7.grid(row=7,column=0)
         price=Label(second_frame,text="Rs 5000")
         price.grid(row=8,column=0)
-        l44=Label(second_frame,text="Nike Messi PSG Jersy(Blue)")
+        l44=Label(second_frame,text="Nike LA Lakers Jersy(Yellow)")
         l44.grid(row=9,column=0)
 
 
@@ -456,8 +471,19 @@ def mainframe():
         b8.grid(row=7,column=1)
         price=Label(second_frame,text="Rs 5000")
         price.grid(row=8,column=1)
-        l44=Label(second_frame,text="Nike Messi PSG Jersy(Blue)")
+        l44=Label(second_frame,text="Jordan Chicago Bull Jersy(Red)")
         l44.grid(row=9,column=1)
+
+
+
+
+        b9 = Button(second_frame, image=F7, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(F7))
+        b9.grid(row=7,column=2)
+        price=Label(second_frame,text="Rs 5000")
+        price.grid(row=8,column=2)
+        l44=Label(second_frame,text="Adiddas Ronaldo Manchester United Jersy(Red)")
+        l44.grid(row=9,column=2)
+
 
 
 
