@@ -37,6 +37,20 @@ def run_login():
 
 
 
+        #----------------------     Home page Function   -------------------
+
+
+def back_home():
+
+    for ele in main_frame.winfo_children():
+        ele.destroy()
+
+
+    mainframe()
+
+
+
+
 
         #--------------   Product Details Function ----------------------
 
@@ -62,8 +76,8 @@ def details_mainframe(product_image):
         my_canvas.create_window((0, 0), window=second_frame)
 
 
-        b1 = Button(second_frame, image=product_image, bg="white", borderwidth=0)
-        b1.grid(row=1,column=0)
+        passed_image = Label(second_frame, image=product_image, bg="white", borderwidth=0)
+        passed_image.grid(row=1,column=0)
 
         add_to_cart=Button(second_frame,text="Add  to cart")
         add_to_cart.grid(row=1,column=1)
@@ -83,26 +97,12 @@ def description(product_image):
 
 
 
-        #----------------------     Home page Function   -------------------
-
-
-
-def back_home():
-
-    for ele in main_frame.winfo_children():
-        ele.destroy()
-
-
-    mainframe()
-
-
-
         #-----------------------     Cart     --------------------------- 
 
 
                 #------------------      adding cart function        ----------------- 
-def add_to_cart():
-        pass
+# def add_to_cart():
+#         pass
 
 
 
@@ -134,7 +134,7 @@ def cart():
 
 
         add_to_cart=Button(second_frame,text="Add  to cart")
-        add_to_cart.grid(row=1,column=1)
+        add_to_cart.grid(row=1,column=0)
 
 
 
@@ -271,7 +271,7 @@ B2= ImageTk.PhotoImage(B2)
 logo_button=Button(root,image=logo_img,borderwidth=0,command=back_home)
 logo_button.place(x=0,y=0)
 
-search_entry=Entry(root,width=91,fg="black",justify="right",borderwidth=2,font="50")
+search_entry=Entry(root,width=75,fg="black",justify="right",borderwidth=2,font="50")
 search_entry.place(x=320,y=0,height=50)
 
 search_button=Button(root,image=search_img,borderwidth=0)
@@ -294,18 +294,19 @@ contact_button.place(x=1310,y=0)
 welcome_label=Label(root,text="WELCOME!")
 welcome_label.place(x=1420,y=0)
 
+try:
+        c.execute('SELECT * FROM login WHERE username = ?',(user,))
 
-# c.execute('SELECT * FROM login WHERE username = ?',(user,))
-
-# records=c.fetchone()
-# username=records[1]
-
-
-
-# username_label=Label(root,text=username)
-# username_label.place(x=1420,y=15)
+        records=c.fetchone()
+        username=records[1]
 
 
+
+        username_label=Label(root,text=username)
+        username_label.place(x=1420,y=15)
+
+except:
+        pass
 
 
         #-------------------     Profile pic     ------------------------
