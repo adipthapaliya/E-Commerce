@@ -14,6 +14,8 @@ from argparse import ArgumentParser
  #===========================================     Main Window         =========================================================
 
 root=Tk()
+
+
 root.title("SOD")
 # root.attributes("-fullscreen", True)
 root.state("zoomed")
@@ -103,12 +105,12 @@ def details_mainframe(product_image):
 
         add_to_cart=Button(second_frame,text="Add  to cart",bg="black",fg="white")
         add_to_cart.grid(row=1,column=1)
-        Large=Button(second_frame,text="Large",bg="black",fg="white ")
-        Large.grid(row=2,column=6)
-        # Medium=Button(second_frame,text="Medium",bg="black",fg="white ")
-        # Medium.grid(row=0,column=2)
-        # small=Button(second_frame,text="small",bg="black",fg="white ")
-        # small.grid(row=0,column=3)
+        Large=Button(second_frame,text="Large",bg="black",fg="white")
+        Large.grid(row=2,column=0)
+        Medium=Button(second_frame,text="Medium",bg="black",fg="white")
+        Medium.grid(row=0,column=2)
+        small=Button(second_frame,text="small",bg="black",fg="white")
+        small.grid(row=0,column=3)
 
 
 
@@ -131,8 +133,8 @@ def description(product_image):
 
 
                 #------------------      adding cart function        ----------------- 
-# def add_to_cart():
-#         pass
+def add_to_cart():
+        pass
 
 
 
@@ -140,7 +142,42 @@ def description(product_image):
                 #-------------------    for your prodcut cart     --------------------------------
 
                 
-def cart():
+def cart_window():
+
+        global main_frame
+
+        main_frame = Frame(root)
+        main_frame.place(x=0, y=90)
+
+        my_canvas = Canvas(main_frame, width=1500, height=740)
+        my_canvas.pack(side=LEFT, fill=BOTH)
+
+        my_scrollbar = ttk.Scrollbar(main_frame, orient=VERTICAL, command=my_canvas.yview)
+        my_scrollbar.pack(side=RIGHT, padx=5, fill=Y)
+
+        my_canvas.configure(yscrollcommand=my_scrollbar.set)
+        my_canvas.bind('<Configure>', lambda e: my_canvas.configure(scrollregion=my_canvas.bbox("all")))        
+
+        second_frame = Frame(my_canvas, width=1500, height=740)
+
+
+        my_canvas.create_window((0, 0), window=second_frame)
+
+        add_to_cart=Button(second_frame,text="Add  to cart")
+        add_to_cart.grid(row=1,column=1)
+        
+
+
+def cart_frame():
+    for ele in main_frame.winfo_children():
+        ele.destroy()
+
+    cart_window()
+
+
+"""
+
+def football():
 
         global main_frame
 
@@ -163,18 +200,13 @@ def cart():
 
 
 
-        add_to_cart=Button(second_frame,text="Add  to cart")
-        add_to_cart.grid(row=1,column=1)
-        
-
-
-def cart_frame():
+def footbal_frame():
     for ele in main_frame.winfo_children():
         ele.destroy()
 
-    cart()
+    football()      
 
-
+"""
 
 
 
@@ -306,7 +338,7 @@ B2= ImageTk.PhotoImage(B2)
 logo_button=Button(root,image=logo_img,borderwidth=0,command=back_home)
 logo_button.place(x=0,y=0)
 
-search_entry=Entry(root,width=5,fg="black",justify="right",borderwidth=2,font="50")
+search_entry=Entry(root,width=71,fg="black",justify="right",borderwidth=2,font="50")
 search_entry.place(x=320,y=0,height=50)
 
 search_button=Button(root,image=search_img,borderwidth=0)
