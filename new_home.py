@@ -89,10 +89,10 @@ def details_mainframe(product_image,product_price,product_info):
 
         global main_frame
 
-        main_frame = Frame(root)
+        main_frame = Frame(root,bg="#ffffff")
         main_frame.place(x=0, y=90)
 
-        my_canvas = Canvas(main_frame, width=1500, height=740)
+        my_canvas = Canvas(main_frame, width=1500, height=740,bg="#ffffff")
         my_canvas.pack(side=LEFT, fill=BOTH)
 
         my_scrollbar = ttk.Scrollbar(main_frame, orient=VERTICAL, command=my_canvas.yview)
@@ -101,7 +101,7 @@ def details_mainframe(product_image,product_price,product_info):
         my_canvas.configure(yscrollcommand=my_scrollbar.set)
         my_canvas.bind('<Configure>', lambda e: my_canvas.configure(scrollregion=my_canvas.bbox("all")))        
 
-        second_frame = Frame(my_canvas, width=1500, height=740)
+        second_frame = Frame(my_canvas, width=1500, height=740,bg="#ffffff")
 
 
         my_canvas.create_window((0, 0), window=second_frame)
@@ -164,10 +164,10 @@ def cart_window():
 
         global main_frame
 
-        main_frame = Frame(root)
+        main_frame = Frame(root,bg="#ffffff")
         main_frame.place(x=0, y=90)
 
-        my_canvas = Canvas(main_frame, width=1500, height=740)
+        my_canvas = Canvas(main_frame, width=1500, height=740,bg="#ffffff")
         my_canvas.pack(side=LEFT, fill=BOTH)
 
         my_scrollbar = ttk.Scrollbar(main_frame, orient=VERTICAL, command=my_canvas.yview)
@@ -176,7 +176,7 @@ def cart_window():
         my_canvas.configure(yscrollcommand=my_scrollbar.set)
         my_canvas.bind('<Configure>', lambda e: my_canvas.configure(scrollregion=my_canvas.bbox("all")))        
 
-        second_frame = Frame(my_canvas, width=1500, height=740)
+        second_frame = Frame(my_canvas, width=1500, height=740,bg="#ffffff")
 
 
         my_canvas.create_window((0, 0), window=second_frame)
@@ -198,10 +198,10 @@ def ball_frame():
 
         global main_frame
 
-        main_frame = Frame(root)
+        main_frame = Frame(root,bg="#ffffff")
         main_frame.place(x=0, y=90)
 
-        my_canvas = Canvas(main_frame, width=1500, height=740)
+        my_canvas = Canvas(main_frame, width=1500, height=740,bg="#ffffff")
         my_canvas.pack(side=LEFT, fill=BOTH)
 
         my_scrollbar = ttk.Scrollbar(main_frame, orient=VERTICAL, command=my_canvas.yview)
@@ -210,12 +210,12 @@ def ball_frame():
         my_canvas.configure(yscrollcommand=my_scrollbar.set)
         my_canvas.bind('<Configure>', lambda e: my_canvas.configure(scrollregion=my_canvas.bbox("all")))        
 
-        second_frame = Frame(my_canvas, width=1500, height=740)
+        second_frame = Frame(my_canvas, width=1500, height=740,bg="#ffffff")
 
 
         my_canvas.create_window((0, 0), window=second_frame)
 
-        b1 = Button(second_frame, image=Ball1, bg="white", borderwidth=0,command=lambda : description(Ball1))
+        b1 = Button(second_frame, image=Ball1, bg="white", borderwidth=0,command=lambda : description(Ball1,"Rs 1150","Wilson Ball"))
         b1.grid(row=1,column=0)
         price=Label(second_frame,text="Rs 1150")
         price.grid(row=2,column=0)
@@ -223,7 +223,7 @@ def ball_frame():
         l11.grid(row=3,column=0)
 
 
-        b2 = Button(second_frame, image=Ball2, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(Ball2))
+        b2 = Button(second_frame, image=Ball2, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(Ball2,"Rs 1150","NBA Ball"))
         b2.grid(row=1,column=2)
         price=Label(second_frame,text="Rs 1150")
         price.grid(row=2,column=2)
@@ -231,7 +231,7 @@ def ball_frame():
         l22.grid(row=3,column=2)
 
 
-        b3 = Button(second_frame, image=Ball3, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(Ball3))
+        b3 = Button(second_frame, image=Ball3, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(Ball3,"Rs 5000","Wilson Leather Ball"))
         b3.grid(row=4,column=0)
         price=Label(second_frame,text="Rs 5000")
         price.grid(row=5,column=0)
@@ -239,7 +239,7 @@ def ball_frame():
         l33.grid(row=6,column=0)
 
 
-        b4 = Button(second_frame, image=Ball4, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(Ball4))
+        b4 = Button(second_frame, image=Ball4, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(Ball4,"Rs 5000","Nike Elite Ball"))
         b4.grid(row=4,column=2)
         price=Label(second_frame,text="Rs 5000")
         price.grid(row=5,column=2)
@@ -253,8 +253,202 @@ def ball_window():
         ele.destroy()
 
     ball_frame()
- 
 
+
+def men_football_frame():
+
+        global main_frame
+
+
+                #----------------    Creating a Frame  --------------------------
+
+        main_frame = Frame(root,bg="#ffffff")
+        main_frame.place(x=0, y=90)
+
+        my_canvas = Canvas(main_frame, width=1500, height=740,bg="#ffffff")
+        my_canvas.pack(side=LEFT, fill=BOTH)
+
+        my_scrollbar = ttk.Scrollbar(main_frame, orient=VERTICAL, command=my_canvas.yview)
+        my_scrollbar.pack(side=RIGHT, padx=5, fill=Y)
+
+        my_canvas.configure(yscrollcommand=my_scrollbar.set)
+        my_canvas.bind('<Configure>', lambda e: my_canvas.configure(scrollregion=my_canvas.bbox("all")))        
+
+        second_frame = Frame(my_canvas, width=1500, height=740,bg="#ffffff")
+
+
+        my_canvas.create_window((0,880), window=second_frame)
+
+
+
+
+
+
+
+        b1 = Button(second_frame, image=F1, bg="white", borderwidth=0,command=lambda : description(F1,"Rs 1150","Adidas Real Madrid Jersy(White)"))
+        b1.grid(row=1,column=0)
+        price=Label(second_frame,text="Rs 1150")
+        price.grid(row=2,column=0)
+        l11=Label(second_frame,text="Adidas Real Madrid Jersy(White)")
+        l11.grid(row=3,column=0)
+
+
+        b2 = Button(second_frame, image=F2, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(F2,"Rs 1150","Nike PSG Jersy(Blue)"))
+        b2.grid(row=1,column=1)
+        price=Label(second_frame,text="Rs 1150")
+        price.grid(row=2,column=1)
+        l22=Label(second_frame,text="Nike PSG Jersy(Blue)")
+        l22.grid(row=3,column=1)
+
+
+        b3 = Button(second_frame, image=F3, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(F3,"Rs 5000","Jordan Messi PSG Jersy(Blue)"))
+        b3.grid(row=1,column=2)
+        price=Label(second_frame,text="Rs 5000")
+        price.grid(row=2,column=2)
+        l33=Label(second_frame,text="Jordan Messi PSG Jersy(Blue)")
+        l33.grid(row=3,column=2)
+
+
+        b4 = Button(second_frame, image=F4, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(F4,"Rs 3000","Addidas Manchester United Jersy(Red)"))
+        b4.grid(row=4,column=0)
+        price=Label(second_frame,text="Rs 3000")
+        price.grid(row=5,column=0)
+        l44=Label(second_frame,text="Addidas Manchester United Jersy(Red)")
+        l44.grid(row=6,column=0)
+
+
+        b5 = Button(second_frame, image=F5, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(F5,"Rs 3000","Addidas Modrić Real Madrid Jersy(Pink)"))
+        b5.grid(row=4,column=1)
+        price=Label(second_frame,text="Rs 3000")
+        price.grid(row=5,column=1)
+        l55=Label(second_frame,text="Addidas Modrić Real Madrid Jersy(Pink)")
+        l55.grid(row=6,column=1)
+
+
+        b6 = Button(second_frame, image=F6, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(F6,"Rs 2500","Addidas Bayern Munich Jersy(Red)"))
+        b6.grid(row=4,column=2)
+        price=Label(second_frame,text="Rs 2500")
+        price.grid(row=5,column=2)
+        l44=Label(second_frame,text="Addidas Bayern Munich Jersy(Red)")
+        l44.grid(row=6,column=2)
+
+        b7 = Button(second_frame, image=F8, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(F8,"Rs 2500","Addidas Bayern Munich Jersy(Red)"))
+        b7.grid(row=1,column=4)
+        price=Label(second_frame,text="Rs 2500")
+        price.grid(row=2,column=4)
+        l44=Label(second_frame,text="Nike Liverpool Jersey (Red)")
+        l44.grid(row=3,column=4)
+        
+        b9 = Button(second_frame, image=F7, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(F7,"Rs 5000","Adiddas Ronaldo Manchester United Jersy(Red)"))
+        b9.grid(row=4,column=4)
+        price=Label(second_frame,text="Rs 5000")
+        price.grid(row=5,column=4)
+        l44=Label(second_frame,text="Adiddas Ronaldo Manchester United Jersy(Red)")
+        l44.grid(row=6,column=4)
+
+def m_football_window():
+
+        for ele in main_frame.winfo_children():
+            ele.destroy()
+
+        men_football_frame()
+
+def female_football_frame():
+        
+        global main_frame
+
+
+                #----------------    Creating a Frame  --------------------------
+
+        main_frame = Frame(root,bg="#ffffff")
+        main_frame.place(x=0, y=90)
+
+        my_canvas = Canvas(main_frame, width=1500, height=740,bg="#ffffff")
+        my_canvas.pack(side=LEFT, fill=BOTH)
+
+        my_scrollbar = ttk.Scrollbar(main_frame, orient=VERTICAL, command=my_canvas.yview)
+        my_scrollbar.pack(side=RIGHT, padx=5, fill=Y)
+
+        my_canvas.configure(yscrollcommand=my_scrollbar.set)
+        my_canvas.bind('<Configure>', lambda e: my_canvas.configure(scrollregion=my_canvas.bbox("all")))        
+
+        second_frame = Frame(my_canvas, width=1500, height=740,bg="#ffffff")
+
+
+        my_canvas.create_window((0,880), window=second_frame)
+
+        b1 = Button(second_frame, image=G1, bg="white", borderwidth=0,command=lambda : description(G1,"Rs 1150","Smaple Women jersey(pink)"))
+        b1.grid(row=1,column=0)
+        price=Label(second_frame,text="Rs 1150")
+        price.grid(row=2,column=0)
+        l11=Label(second_frame,text="Smaple Women jersey(pink)")
+        l11.grid(row=3,column=0)
+
+
+        b2 = Button(second_frame, image=G2, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(G2,"Rs 1150","Addidas Germany Home Jersey(White)"))
+        b2.grid(row=1,column=1)
+        price=Label(second_frame,text="Rs 1150")
+        price.grid(row=2,column=1)
+        l22=Label(second_frame,text="Addidas Germany Home Jersey(White)")
+        l22.grid(row=3,column=1)
+
+
+        b3 = Button(second_frame, image=G3, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(G3,"Rs 5000","Nike Brazil Home Jersey(Yellow)"))
+        b3.grid(row=4,column=0)
+        price=Label(second_frame,text="Rs 5000")
+        price.grid(row=5,column=0)
+        l33=Label(second_frame,text="Nike Brazil Home Jersey(Yellow)")
+        l33.grid(row=6,column=0)
+
+
+        b4 = Button(second_frame, image=G4, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(G4,"Rs 5000","Addidas Arsenal Jersey(Red)"))
+        b4.grid(row=4,column=1)
+        price=Label(second_frame,text="Rs 5000")
+        price.grid(row=5,column=1)
+        l44=Label(second_frame,text="Addidas Arsenal Jersey(Red)")
+        l44.grid(row=6,column=1)
+
+
+        b5 = Button(second_frame, image=G5, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(G5,"Rs 5000","Addidas Belgium Home Jersey(Red)"))
+        b5.grid(row=4,column=3)
+        price=Label(second_frame,text="Rs 5000")
+        price.grid(row=5,column=3)
+        l55=Label(second_frame,text="Addidas Belgium Home Jersey(Red)")
+        l55.grid(row=6,column=3)
+
+
+
+
+        b6 = Button(second_frame, image=G6, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(G6,"Rs 5000","Addidas Belgium Home Jersey(Red)"))
+        b6.grid(row=4,column=2)
+        price=Label(second_frame,text="Rs 5000")
+        price.grid(row=5,column=2)
+        l55=Label(second_frame,text="Addidas Belgium Home Jersey(Red)")
+        l55.grid(row=6,column=2)
+
+        b7 = Button(second_frame, image=G7, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(G7,"Rs 5000","Addidas Belgium Home Jersey(Red)"))
+        b7.grid(row=1,column=2)
+        price=Label(second_frame,text="Rs 5000")
+        price.grid(row=2,column=2)
+        l55=Label(second_frame,text="Addidas Belgium Home Jersey(Red)")
+        l55.grid(row=3,column=2)
+        
+        b8 = Button(second_frame, image=G8, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(G8,"Rs 5000","Addidas Belgium Home Jersey(Red)"))
+        b8.grid(row=1,column=3)
+        price=Label(second_frame,text="Rs 5000")
+        price.grid(row=2,column=3)
+        l55=Label(second_frame,text="Addidas Belgium Home Jersey(Red)")
+        l55.grid(row=3,column=3)
+
+
+
+
+def f_football_window():
+
+        for ele in main_frame.winfo_children():
+            ele.destroy()
+
+        female_football_frame()
 
 
 
@@ -353,6 +547,8 @@ F4 = Image.open("Dress\F4.jpg")
 F5 = Image.open("Dress\F5.jpg")
 F6 = Image.open("Dress\F6.jpg")
 F7 = Image.open("Dress\F7.png")
+F8 = Image.open("Dress\F8.jpg")
+
 B1 = Image.open("Dress\B1.jpg")
 B2 = Image.open("Dress\B2.jpg")
 
@@ -364,6 +560,9 @@ F4 = F4.resize((400, 400), Image.ANTIALIAS)
 F5 = F5.resize((400, 400), Image.ANTIALIAS)
 F6 = F6.resize((400, 400), Image.ANTIALIAS)
 F7 = F7.resize((400, 400), Image.ANTIALIAS)
+F8 = F8.resize((400, 400), Image.ANTIALIAS)
+
+
 B1 = B1.resize((400, 400), Image.ANTIALIAS)
 B2 = B2.resize((400, 400), Image.ANTIALIAS)
 
@@ -374,6 +573,9 @@ F4 = ImageTk.PhotoImage(F4)
 F5 = ImageTk.PhotoImage(F5)
 F6 = ImageTk.PhotoImage(F6)
 F7 = ImageTk.PhotoImage(F7)
+F8 = ImageTk.PhotoImage(F8)
+
+
 B1 = ImageTk.PhotoImage(B1)
 B2= ImageTk.PhotoImage(B2)
 
@@ -399,6 +601,43 @@ Ball1 = ImageTk.PhotoImage(Ball1)
 Ball2 = ImageTk.PhotoImage(Ball2)
 Ball3 = ImageTk.PhotoImage(Ball3)
 Ball4 = ImageTk.PhotoImage(Ball4)
+
+
+        #-----------------      female dress   -------------------------------
+
+G1 = Image.open("Girl\F1.jpg")
+G2 = Image.open("Girl\F2.jpg")
+G3 = Image.open("Girl\F3.jpg")
+G4 = Image.open("Girl\F4.jpg")
+G5 = Image.open("Girl\F5.jpg")
+G6 = Image.open("Girl\F6.jpg")
+G7 = Image.open("Girl\F7.jpg")
+G8 = Image.open("Girl\F8.jpg")
+
+
+
+
+
+
+G1 = G1.resize((380, 380), Image.ANTIALIAS)
+G2 = G2.resize((400, 400), Image.ANTIALIAS)
+G3 = G3.resize((400, 400), Image.ANTIALIAS)
+G4 = G4.resize((400, 400), Image.ANTIALIAS)
+G5 = G5.resize((400, 400), Image.ANTIALIAS)
+G6 = G6.resize((400, 400), Image.ANTIALIAS)
+G7 = G7.resize((400, 400), Image.ANTIALIAS)
+G8 = G8.resize((400, 400), Image.ANTIALIAS)
+
+
+
+G1 = ImageTk.PhotoImage(G1)
+G2 = ImageTk.PhotoImage(G2)
+G3 = ImageTk.PhotoImage(G3)
+G4 = ImageTk.PhotoImage(G4)
+G5 = ImageTk.PhotoImage(G5)
+G6 = ImageTk.PhotoImage(G6)
+G7 = ImageTk.PhotoImage(G7)
+G8 = ImageTk.PhotoImage(G8)
 
 
 
@@ -462,7 +701,7 @@ mb1.place(x=320, y=50)
 mb1.menu = Menu(mb1, tearoff=0, bg="white", fg="black")
 mb1["menu"] = mb1.menu
 mb2 = Menu(mb1, tearoff=0, bg="white", fg="black")
-mb2.add_command(label="Wear", activebackground="black", activeforeground="white",command=sec_window)
+mb2.add_command(label="Wear", activebackground="black", activeforeground="white",command=m_football_window)
 mb2.add_separator()
 mb2.add_command(label="Balls", activebackground="black", activeforeground="white",command=b1_window)
 
@@ -484,7 +723,7 @@ mb3.place(x=650, y=50)
 mb3.menu = Menu(mb3, tearoff=0, bg="white", fg="black")
 mb3["menu"] = mb3.menu
 mb4 = Menu(mb3, tearoff=0, bg="white", fg="black")
-mb4.add_command(label="Wear", activebackground="black", activeforeground="white",command=g_window)
+mb4.add_command(label="Wear", activebackground="black", activeforeground="white",command=f_football_window)
 mb4.add_separator()
 mb4.add_command(label="Balls", activebackground="black", activeforeground="white",command=b1_window)
 
@@ -524,10 +763,10 @@ def mainframe():
 
                 #----------------    Creating a Frame  --------------------------
 
-        main_frame = Frame(root)
+        main_frame = Frame(root,bg="#ffffff")
         main_frame.place(x=0, y=90)
 
-        my_canvas = Canvas(main_frame, width=1500, height=740)
+        my_canvas = Canvas(main_frame, width=1500, height=740,bg="#ffffff")
         my_canvas.pack(side=LEFT, fill=BOTH)
 
         my_scrollbar = ttk.Scrollbar(main_frame, orient=VERTICAL, command=my_canvas.yview)
@@ -536,7 +775,7 @@ def mainframe():
         my_canvas.configure(yscrollcommand=my_scrollbar.set)
         my_canvas.bind('<Configure>', lambda e: my_canvas.configure(scrollregion=my_canvas.bbox("all")))        
 
-        second_frame = Frame(my_canvas, width=1500, height=740)
+        second_frame = Frame(my_canvas, width=1500, height=740,bg="#ffffff")
 
 
         my_canvas.create_window((0,880), window=second_frame)
