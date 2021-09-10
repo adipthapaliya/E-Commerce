@@ -213,7 +213,7 @@ def ball_frame():
         second_frame = Frame(my_canvas, width=1500, height=740,bg="#ffffff")
 
 
-        my_canvas.create_window((0, 0), window=second_frame)
+        my_canvas.create_window((0, 800), window=second_frame)
 
         b1 = Button(second_frame, image=Ball1, bg="white", borderwidth=0,command=lambda : description(Ball1,"Rs 1150","Wilson Ball"))
         b1.grid(row=1,column=0)
@@ -224,28 +224,90 @@ def ball_frame():
 
 
         b2 = Button(second_frame, image=Ball2, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(Ball2,"Rs 1150","NBA Ball"))
-        b2.grid(row=1,column=2)
+        b2.grid(row=1,column=1)
         price=Label(second_frame,text="Rs 1150")
-        price.grid(row=2,column=2)
+        price.grid(row=2,column=1)
         l22=Label(second_frame,text="NBA Ball")
-        l22.grid(row=3,column=2)
+        l22.grid(row=3,column=1)
 
 
         b3 = Button(second_frame, image=Ball3, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(Ball3,"Rs 5000","Wilson Leather Ball"))
-        b3.grid(row=4,column=0)
+        b3.grid(row=1,column=2)
         price=Label(second_frame,text="Rs 5000")
-        price.grid(row=5,column=0)
+        price.grid(row=2,column=2)
         l33=Label(second_frame,text="Wilson Leather Ball")
-        l33.grid(row=6,column=0)
+        l33.grid(row=3,column=2)
 
 
         b4 = Button(second_frame, image=Ball4, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(Ball4,"Rs 5000","Nike Elite Ball"))
-        b4.grid(row=4,column=2)
+        b4.grid(row=1,column=3)
+        price=Label(second_frame,text="Rs 5000")
+        price.grid(row=2,column=3)
+        l44=Label(second_frame,text="Nike Elite Ball")
+        l44.grid(row=3,column=3)
+
+
+
+        b5 = Button(second_frame, image=Ball5, bg="white", borderwidth=0,command=lambda : description(Ball5,"Rs 1150","NIKE PL BALL"))
+        b5.grid(row=4,column=0)
+        price=Label(second_frame,text="Rs 1150")
+        price.grid(row=5,column=0)
+        l11=Label(second_frame,text="NIKE PL BALL")
+        l11.grid(row=6,column=0)
+
+
+        b6 = Button(second_frame, image=Ball6, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(Ball6,"Rs 1150","Addidas Telstar WC 18 Ball"))
+        b6.grid(row=4,column=1)
+        price=Label(second_frame,text="Rs 1150")
+        price.grid(row=5,column=1)
+        l22=Label(second_frame,text="Addidas Telstar WC 18 Ball")
+        l22.grid(row=6,column=1)
+
+
+        b7 = Button(second_frame, image=Ball7, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(Ball7,"Rs 5000","Classic Black & White Ball"))
+        b7.grid(row=4,column=2)
         price=Label(second_frame,text="Rs 5000")
         price.grid(row=5,column=2)
-        l44=Label(second_frame,text="Nike Elite Ball")
-        l44.grid(row=6,column=2)
+        l33=Label(second_frame,text="Classic Black & White Ball")
+        l33.grid(row=6,column=2)
 
+
+        b8 = Button(second_frame, image=Ball8, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(Ball8,"Rs 5000","UEFA Ball"))
+        b8.grid(row=4,column=3)
+        price=Label(second_frame,text="Rs 5000")
+        price.grid(row=5,column=3)
+        l44=Label(second_frame,text="UEFA Ball")
+        l44.grid(row=6,column=3)
+
+
+        b9 = Button(second_frame, image=Ball9, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(Ball9,"Rs 5000","Addidas Euro 2020 Ball"))
+        b9.grid(row=7,column=0)
+        price=Label(second_frame,text="Rs 5000")
+        price.grid(row=8,column=0)
+        l55=Label(second_frame,text="Addidas Euro 2020 Ball")
+        l55.grid(row=9,column=0)
+
+
+        b10 = Button(second_frame, image=Ball10, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(Ball10,"Rs 5000","Addidas Brazuca WC 14 Ball"))
+        b10.grid(row=7,column=1)
+        price=Label(second_frame,text="Rs 5000")
+        price.grid(row=8,column=1)
+        l44=Label(second_frame,text="Addidas Brazuca WC 14 Ball")
+        l44.grid(row=9,column=1)
+
+        b11 = Button(second_frame, image=Ball1, bg="white", borderwidth=0,command=lambda : description(Ball11,"Rs 1150","Alex Ball"))
+        b11.grid(row=1,column=4)
+        price=Label(second_frame,text="Rs 1150")
+        price.grid(row=2,column=4)
+        l11=Label(second_frame,text="Alex Ball")
+        l11.grid(row=3,column=4)
+
+        b12 = Button(second_frame, image=Ball1, bg="white", borderwidth=0,command=lambda : description(Ball12,"Rs 1150","Puma Ball"))
+        b12.grid(row=4,column=4)
+        price=Label(second_frame,text="Rs 1150")
+        price.grid(row=5,column=4)
+        l11=Label(second_frame,text="Puma Ball")
+        l11.grid(row=6,column=4)
 
 def ball_window():
 
@@ -453,6 +515,108 @@ def f_football_window():
 
 
 
+def Basketball_frame():
+        
+        global main_frame
+
+
+                #----------------    Creating a Frame  --------------------------
+
+        main_frame = Frame(root,bg="#ffffff")
+        main_frame.place(x=0, y=90)
+
+        my_canvas = Canvas(main_frame, width=1500, height=740,bg="#ffffff")
+        my_canvas.pack(side=LEFT, fill=BOTH)
+
+        my_scrollbar = ttk.Scrollbar(main_frame, orient=VERTICAL, command=my_canvas.yview)
+        my_scrollbar.pack(side=RIGHT, padx=5, fill=Y)
+
+        my_canvas.configure(yscrollcommand=my_scrollbar.set)
+        my_canvas.bind('<Configure>', lambda e: my_canvas.configure(scrollregion=my_canvas.bbox("all")))        
+
+        second_frame = Frame(my_canvas, width=1500, height=740,bg="#ffffff")
+
+
+        my_canvas.create_window((0,880), window=second_frame)
+
+        
+        b1 = Button(second_frame, image=BB1, bg="white", borderwidth=0,command=lambda : description(BB1,"Rs 1150","Nike LA Lakers Jersy(Yellow)"))
+        b1.grid(row=1,column=0)
+        price=Label(second_frame,text="Rs 1150")
+        price.grid(row=2,column=0)
+        l11=Label(second_frame,text="Nike LA Lakers Jersy(Yellow)")
+        l11.grid(row=3,column=0)
+
+
+        b2 = Button(second_frame, image=BB2, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(BB2,"Rs 1150","Jordan Chicago Bulls Jersey(Red)"))
+        b2.grid(row=1,column=1)
+        price=Label(second_frame,text="Rs 1150")
+        price.grid(row=2,column=1)
+        l22=Label(second_frame,text="Jordan Chicago Bulls Jersey(Red)")
+        l22.grid(row=3,column=1)
+
+
+        b3 = Button(second_frame, image=BB3, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(BB3,"Rs 5000","Jordan Boston Celetics Jersey(Black)"))
+        b3.grid(row=1,column=2)
+        price=Label(second_frame,text="Rs 5000")
+        price.grid(row=1,column=2)
+        l33=Label(second_frame,text="Jordan Boston Celetics Jersey(Black)")
+        l33.grid(row=1,column=2)
+
+
+        b4 = Button(second_frame, image=BB4, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(BB4,"Rs 5000","Nike Raptors Toronto Jesrey(White)"))
+        b4.grid(row=4,column=0)
+        price=Label(second_frame,text="Rs 5000")
+        price.grid(row=5,column=0)
+        l44=Label(second_frame,text="Nike Raptors Toronto Jesrey(White)")
+        l44.grid(row=6,column=0)
+
+
+        b5 = Button(second_frame, image=BB5, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(BB5,"Rs 5000","Nike Dallas Jersy(Blue)"))
+        b5.grid(row=4,column=1)
+        price=Label(second_frame,text="Rs 5000")
+        price.grid(row=5,column=1)
+        l55=Label(second_frame,text="Nike Dallas Jersy(Blue)")
+        l55.grid(row=6,column=1)
+
+
+        b6 = Button(second_frame,image=BB6, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(BB6,"Rs 500","Nike Villanova Jersey(Blue)"))
+        b6.grid(row=4,column=2)
+        price=Label(second_frame,text="Rs 5000")
+        price.grid(row=5,column=2)
+        l55=Label(second_frame,text="Nike Villanova Jersey(Blue)")
+        l55.grid(row=6,column=2)
+
+        b7 = Button(second_frame, image=BB7, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(BB7,"Rs 5000","Sample Basketball Jersy(White)"))
+        b7.grid(row=7,column=0)
+        price=Label(second_frame,text="Rs 5000")
+        price.grid(row=8,column=0)
+        l55=Label(second_frame,text="Sample Basketball Jersey(White)")
+        l55.grid(row=9,column=0)
+
+
+def mf_Basketball_window():
+
+        for ele in main_frame.winfo_children():
+            ele.destroy()
+
+        Basketball_frame()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #=====================================        Database        ================================================================
 
 conn=sqlite3.connect('register.db')
@@ -586,14 +750,32 @@ Ball1 = Image.open("Balls1\B1.jpg")
 Ball2 = Image.open("Balls1\B2.png")
 Ball3 = Image.open("Balls1\B3.jpg")
 Ball4 = Image.open("Balls1\B4.jpg")
+Ball5 = Image.open("Balls\B1.jpg")
+Ball6 = Image.open("Balls\B2.jpg")
+Ball7 = Image.open("Balls\B3.jpg")
+Ball8 = Image.open("Balls\B4.jpg")
+Ball9 = Image.open("Balls\B5.jpg")
+Ball10 = Image.open("Balls\B6.jpg")
+Ball11 = Image.open("Balls1\B5.jpg")
+Ball12 = Image.open("Balls\B7.jpg")
 
 
 
 
-Ball1 = Ball1.resize((200, 200), Image.ANTIALIAS)
-Ball2 = Ball2.resize((200, 200), Image.ANTIALIAS)
-Ball3 = Ball3.resize((200, 200), Image.ANTIALIAS)
-Ball4 = Ball4.resize((200, 200), Image.ANTIALIAS)
+
+Ball1 = Ball1.resize((300, 300), Image.ANTIALIAS)
+Ball2 = Ball2.resize((300, 300), Image.ANTIALIAS)
+Ball3 = Ball3.resize((300, 300), Image.ANTIALIAS)
+Ball4 = Ball4.resize((300, 300), Image.ANTIALIAS)
+Ball5 = Ball5.resize((300, 300), Image.ANTIALIAS)
+Ball6= Ball6.resize((300, 300), Image.ANTIALIAS)
+Ball7 = Ball7.resize((300, 300), Image.ANTIALIAS)
+Ball8 = Ball8.resize((300, 300), Image.ANTIALIAS)
+Ball9 = Ball9.resize((300, 300), Image.ANTIALIAS)
+Ball10 = Ball10.resize((300, 300), Image.ANTIALIAS)
+Ball11 = Ball11.resize((300, 300), Image.ANTIALIAS)
+Ball12 = Ball12.resize((300, 300), Image.ANTIALIAS)
+
 
 
 
@@ -601,6 +783,16 @@ Ball1 = ImageTk.PhotoImage(Ball1)
 Ball2 = ImageTk.PhotoImage(Ball2)
 Ball3 = ImageTk.PhotoImage(Ball3)
 Ball4 = ImageTk.PhotoImage(Ball4)
+Ball5 = ImageTk.PhotoImage(Ball5)
+Ball6 = ImageTk.PhotoImage(Ball6)
+Ball7 = ImageTk.PhotoImage(Ball7)
+Ball8 = ImageTk.PhotoImage(Ball8)
+Ball9 = ImageTk.PhotoImage(Ball9)
+Ball10 = ImageTk.PhotoImage(Ball10)
+Ball11 = ImageTk.PhotoImage(Ball10)
+Ball12 = ImageTk.PhotoImage(Ball10)
+
+
 
 
         #-----------------      female dress   -------------------------------
@@ -638,6 +830,52 @@ G5 = ImageTk.PhotoImage(G5)
 G6 = ImageTk.PhotoImage(G6)
 G7 = ImageTk.PhotoImage(G7)
 G8 = ImageTk.PhotoImage(G8)
+
+
+
+
+          #-------------------Basketball dresses-----------------------------------------------------------#
+
+
+BB1 = Image.open("Dress\B1.jpg")
+BB2 = Image.open("Dress\B2.jpg")
+BB3 = Image.open("Dress\B3.jpg")
+BB4 = Image.open("Dress\B4.jpg")
+BB5 = Image.open("Dress\B5.jpg")
+BB6 = Image.open("Dress\B6.jpg")
+BB7 = Image.open("Dress\B7.jpg")
+
+
+
+
+
+BB1 = BB1.resize((400, 400), Image.ANTIALIAS)
+BB2 = BB2.resize((400, 400), Image.ANTIALIAS)
+BB3 = BB3.resize((400, 400), Image.ANTIALIAS)
+BB4 = BB4.resize((400, 400), Image.ANTIALIAS)
+BB5 = BB5.resize((400, 400), Image.ANTIALIAS)
+BB6 = BB6.resize((400, 400), Image.ANTIALIAS)
+BB7 = BB7.resize((400, 400), Image.ANTIALIAS)
+
+
+
+
+
+BB1 = ImageTk.PhotoImage(BB1)
+BB2= ImageTk.PhotoImage(BB2)
+BB3 = ImageTk.PhotoImage(BB3)
+BB4= ImageTk.PhotoImage(BB4)
+BB5 = ImageTk.PhotoImage(BB5)
+BB6 = ImageTk.PhotoImage(BB6)
+BB7 = ImageTk.PhotoImage(BB7)
+
+
+
+
+
+
+
+
 
 
 
@@ -706,7 +944,7 @@ mb2.add_separator()
 mb2.add_command(label="Balls", activebackground="black", activeforeground="white",command=b1_window)
 
 mb0 = Menu(mb1, tearoff=0, bg="white", fg="black")
-mb0.add_command(label="Wear", activebackground="black", activeforeground="white",command=bb_window)
+mb0.add_command(label="Wear", activebackground="black", activeforeground="white",command=mf_Basketball_window)
 mb0.add_separator()
 mb0.add_command(label="Balls", activebackground="black", activeforeground="white",command=b2_window)
 
@@ -729,7 +967,7 @@ mb4.add_command(label="Balls", activebackground="black", activeforeground="white
 
 
 mb7 = Menu(mb3, tearoff=0, bg="white", fg="black")
-mb7.add_command(label="Wear", activebackground="black", activeforeground="white",command=bb_window)
+mb7.add_command(label="Wear", activebackground="black", activeforeground="white",command=mf_Basketball_window)
 mb7.add_separator()
 mb7.add_command(label="Balls", activebackground="black", activeforeground="white",command=b2_window)
 
