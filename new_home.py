@@ -559,9 +559,9 @@ def Basketball_frame():
         b3 = Button(second_frame, image=BB3, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(BB3,"Rs 5000","Jordan Boston Celetics Jersey(Black)"))
         b3.grid(row=1,column=2)
         price=Label(second_frame,text="Rs 5000")
-        price.grid(row=1,column=2)
+        price.grid(row=2,column=2)
         l33=Label(second_frame,text="Jordan Boston Celetics Jersey(Black)")
-        l33.grid(row=1,column=2)
+        l33.grid(row=3,column=2)
 
 
         b4 = Button(second_frame, image=BB4, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(BB4,"Rs 5000","Nike Raptors Toronto Jesrey(White)"))
@@ -789,8 +789,8 @@ Ball7 = ImageTk.PhotoImage(Ball7)
 Ball8 = ImageTk.PhotoImage(Ball8)
 Ball9 = ImageTk.PhotoImage(Ball9)
 Ball10 = ImageTk.PhotoImage(Ball10)
-Ball11 = ImageTk.PhotoImage(Ball10)
-Ball12 = ImageTk.PhotoImage(Ball10)
+Ball11 = ImageTk.PhotoImage(Ball11)
+Ball12 = ImageTk.PhotoImage(Ball12)
 
 
 
