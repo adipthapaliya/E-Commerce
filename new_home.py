@@ -1,4 +1,6 @@
 
+from os import error
+from sqlite3.dbapi2 import Row
 from tkinter import *
 from PIL import Image,ImageTk
 import subprocess
@@ -176,8 +178,7 @@ def search_frame():
 
         my_canvas.create_window((0, 880), window=second_frame)
 
-
-
+        
         if search_entry.get()=="Football" or search_entry.get()=="football" or search_entry.get()=="soccer":
 
                 search_entry.delete(0,END)
@@ -207,91 +208,97 @@ def search_frame():
 
 
                 b4 = Button(second_frame, image=F4, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(F4,"Rs 3000","Addidas Manchester United Jersy(Red)"))
-                b4.grid(row=4,column=0)
+                b4.grid(row=4,column=3)
                 price=Label(second_frame,text="Rs 3000")
-                price.grid(row=5,column=0)
+                price.grid(row=5,column=3)
                 l44=Label(second_frame,text="Addidas Manchester United Jersy(Red)")
-                l44.grid(row=6,column=0)
+                l44.grid(row=6,column=3)
 
 
                 b5 = Button(second_frame, image=F5, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(F5,"Rs 3000","Addidas Modrić Real Madrid Jersy(Pink)"))
-                b5.grid(row=4,column=1)
+                b5.grid(row=4,column=0)
                 price=Label(second_frame,text="Rs 3000")
-                price.grid(row=5,column=1)
+                price.grid(row=5,column=0)
                 l55=Label(second_frame,text="Addidas Modrić Real Madrid Jersy(Pink)")
-                l55.grid(row=6,column=1)
+                l55.grid(row=6,column=0)
 
 
                 b6 = Button(second_frame, image=F6, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(F6,"Rs 2500","Addidas Bayern Munich Jersy(Red)"))
-                b6.grid(row=4,column=2)
+                b6.grid(row=4,column=1)
                 price=Label(second_frame,text="Rs 2500")
-                price.grid(row=5,column=2)
-                l44=Label(second_frame,text="Addidas Bayern Munich Jersy(Red)")
-                l44.grid(row=6,column=2)
-
-                b1 = Button(second_frame, image=G1, bg="white", borderwidth=0,command=lambda : description(G1,"Rs 1150","Smaple Women jersey(pink)"))
-                b1.grid(row=1,column=0)
-                price=Label(second_frame,text="Rs 1150")
-                price.grid(row=2,column=0)
-                l11=Label(second_frame,text="Smaple Women jersey(pink)")
-                l11.grid(row=3,column=0)
-
-
-                b2 = Button(second_frame, image=G2, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(G2,"Rs 1150","Addidas Germany Home Jersey(White)"))
-                b2.grid(row=1,column=1)
-                price=Label(second_frame,text="Rs 1150")
-                price.grid(row=2,column=1)
-                l22=Label(second_frame,text="Addidas Germany Home Jersey(White)")
-                l22.grid(row=3,column=1)
-
-
-                b3 = Button(second_frame, image=G3, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(G3,"Rs 5000","Nike Brazil Home Jersey(Yellow)"))
-                b3.grid(row=4,column=0)
-                price=Label(second_frame,text="Rs 5000")
-                price.grid(row=5,column=0)
-                l33=Label(second_frame,text="Nike Brazil Home Jersey(Yellow)")
-                l33.grid(row=6,column=0)
-
-
-                b4 = Button(second_frame, image=G4, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(G4,"Rs 5000","Addidas Arsenal Jersey(Red)"))
-                b4.grid(row=4,column=1)
-                price=Label(second_frame,text="Rs 5000")
                 price.grid(row=5,column=1)
-                l44=Label(second_frame,text="Addidas Arsenal Jersey(Red)")
+                l44=Label(second_frame,text="Addidas Bayern Munich Jersy(Red)")
                 l44.grid(row=6,column=1)
 
+                b7 = Button(second_frame, image=G1, bg="white", borderwidth=0,command=lambda : description(G1,"Rs 1150","Smaple Women jersey(pink)"))
+                b7.grid(row=7,column=2)
+                price=Label(second_frame,text="Rs 1150")
+                price.grid(row=8,column=2)
+                l11=Label(second_frame,text="Smaple Women jersey(pink)")
+                l11.grid(row=9,column=2)
 
-                b5 = Button(second_frame, image=G5, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(G5,"Rs 5000","Addidas Belgium Home Jersey(Red)"))
-                b5.grid(row=4,column=3)
+
+                b8 = Button(second_frame, image=G2, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(G2,"Rs 1150","Addidas Germany Home Jersey(White)"))
+                b8.grid(row=7,column=3)
+                price=Label(second_frame,text="Rs 1150")
+                price.grid(row=8,column=3)
+                l22=Label(second_frame,text="Addidas Germany Home Jersey(White)")
+                l22.grid(row=9,column=3)
+
+
+                b9 = Button(second_frame, image=G3, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(G3,"Rs 5000","Nike Brazil Home Jersey(Yellow)"))
+                b9.grid(row=7,column=0)
                 price=Label(second_frame,text="Rs 5000")
-                price.grid(row=5,column=3)
+                price.grid(row=8,column=0)
+                l33=Label(second_frame,text="Nike Brazil Home Jersey(Yellow)")
+                l33.grid(row=9,column=0)
+
+
+                b10 = Button(second_frame, image=G4, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(G4,"Rs 5000","Addidas Arsenal Jersey(Red)"))
+                b10.grid(row=7,column=1)
+                price=Label(second_frame,text="Rs 5000")
+                price.grid(row=8,column=1)
+                l44=Label(second_frame,text="Addidas Arsenal Jersey(Red)")
+                l44.grid(row=9,column=1)
+
+
+                b11 = Button(second_frame, image=G5, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(G5,"Rs 5000","Addidas Belgium Home Jersey(Red)"))
+                b11.grid(row=10,column=2)
+                price=Label(second_frame,text="Rs 5000")
+                price.grid(row=11,column=2)
                 l55=Label(second_frame,text="Addidas Belgium Home Jersey(Red)")
-                l55.grid(row=6,column=3)
+                l55.grid(row=12,column=2)
 
 
 
 
-                b6 = Button(second_frame, image=G6, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(G6,"Rs 5000","Addidas Belgium Home Jersey(Red)"))
-                b6.grid(row=4,column=2)
+                b12 = Button(second_frame, image=G6, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(G6,"Rs 5000","Nike Livepool Jersey(Red)"))
+                b12.grid(row=10,column=3)
+                price=Label(second_frame,text="Rs 5000")
+                price.grid(row=11,column=3)
+                l55=Label(second_frame,text="Nike Livepool Jersey(Red)")
+                l55.grid(row=12,column=3)
+
+                b13 = Button(second_frame, image=G7, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(G7,"Rs 5000","Nike Chelsea Jersey(Blue)"))
+                b13.grid(row=10,column=0)
+                price=Label(second_frame,text="Rs 5000")
+                price.grid(row=11,column=0)
+                l55=Label(second_frame,text="Nike Chelsea Jersey(Blue)")
+                l55.grid(row=12,column=0)
+                
+                b14 = Button(second_frame, image=G8, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(G8,"Rs 5000","Addidas Juventus Jersey(white)"))
+                b14.grid(row=4,column=2)
                 price=Label(second_frame,text="Rs 5000")
                 price.grid(row=5,column=2)
-                l55=Label(second_frame,text="Addidas Belgium Home Jersey(Red)")
+                l55=Label(second_frame,text="Addidas Juventus Jersey(white)")
                 l55.grid(row=6,column=2)
 
-                b7 = Button(second_frame, image=G7, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(G7,"Rs 5000","Addidas Belgium Home Jersey(Red)"))
-                b7.grid(row=1,column=2)
-                price=Label(second_frame,text="Rs 5000")
-                price.grid(row=2,column=2)
-                l55=Label(second_frame,text="Addidas Belgium Home Jersey(Red)")
-                l55.grid(row=3,column=2)
-                
-                b8 = Button(second_frame, image=G8, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(G8,"Rs 5000","Addidas Belgium Home Jersey(Red)"))
-                b8.grid(row=1,column=3)
+                b15 = Button(second_frame, image=F7, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(F7,"Rs 5000","Adiddas Ronaldo Manchester United Jersy(Red)"))
+                b15.grid(row=1,column=3)
                 price=Label(second_frame,text="Rs 5000")
                 price.grid(row=2,column=3)
-                l55=Label(second_frame,text="Addidas Belgium Home Jersey(Red)")
-                l55.grid(row=3,column=3)
-
+                l44=Label(second_frame,text="Adiddas Ronaldo Manchester United Jersy(Red)")
+                l44.grid(row=3,column=3)
                 
         if search_entry.get()=="basketball" or search_entry.get()=="Basketball":
 
@@ -444,8 +451,12 @@ def search_frame():
                 price.grid(row=5,column=4)
                 l11=Label(second_frame,text="Puma Ball")
                 l11.grid(row=6,column=4)
+        
+        if search_entry.get()!="football" or search_entry.get()!="Football" or search_entry.get()!="soccer" or search_entry.get()!="basketball" or search_entry.get()!="Basketball" or search_entry.get()!="ball" or search_entry.get()!="balls" or search_entry.get()!="Ball" or  search_entry.get()!="Basketball" or search_entry.get()!="ball" or search_entry.get()!="balls" or search_entry.get()!="Balls" or search_entry.get()!="Basketball" or search_entry.get()!="ball" or search_entry.get()!="balls" or search_entry.get()!="BALL" or search_entry.get()!="Basketball" or search_entry.get()!="ball" or search_entry.get()!="balls" or search_entry.get()!="BALLS":
+                error_label=Label(second_frame,text="Opps! Cant't find the item (TRY AGAIN)")
+                error_label.grid(row=0,column=0)
 
-
+                
                         
 
 
