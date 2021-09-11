@@ -42,6 +42,71 @@ def back_home():
 
         #--------------   Product Details Function ----------------------
 
+def ball_details_mainframe(product_image,product_price,product_info):
+
+                #--------------------- funtion to dipaly size
+
+        def size_value(product_size):
+                size_display.delete(0,END)
+                size_display.insert(0,product_size)
+
+        global main_frame
+
+        main_frame = Frame(root,bg="#ffffff")
+        main_frame.place(x=0, y=90)
+
+        my_canvas = Canvas(main_frame, width=1500, height=740,bg="#ffffff")
+        my_canvas.pack(side=LEFT, fill=BOTH)
+
+        my_scrollbar = ttk.Scrollbar(main_frame, orient=VERTICAL, command=my_canvas.yview)
+        my_scrollbar.pack(side=RIGHT, padx=5, fill=Y)
+
+        my_canvas.configure(yscrollcommand=my_scrollbar.set)
+        my_canvas.bind('<Configure>', lambda e: my_canvas.configure(scrollregion=my_canvas.bbox("all")))        
+
+        second_frame = Frame(my_canvas, width=1500, height=740,bg="#ffffff")
+
+
+        my_canvas.create_window((0, 0), window=second_frame)
+
+
+        passed_image = Label(second_frame, image=product_image, bg="white", borderwidth=0)
+        passed_image.grid(row=0,column=0,ipadx=40,ipady=70,rowspan=10)
+
+        passed_image_price=Label(second_frame,text=product_price)
+        passed_image_price.grid(row=1,column=1,columnspan=4)
+
+        passed_image_info=Label(second_frame,text=product_info)
+        passed_image_info.grid(row=2,column=1,columnspan=4)
+
+        size_label=Label(second_frame,text="Size")
+        size_label.grid(row=3,column=1)
+        size_display=Entry(second_frame,width=4)
+        size_display.grid(row=3,column=2)
+
+        Large=Button(second_frame,text="2",bg="black",fg="white",command=lambda : size_value("2"))
+        Large.grid(row=4,column=1)
+        Medium=Button(second_frame,text="3",bg="black",fg="white",command=lambda : size_value("3"))
+        Medium.grid(row=4,column=2)
+        small=Button(second_frame,text="4",bg="black",fg="white",command=lambda : size_value("4"))
+        small.grid(row=4,column=3)
+        vsmall=Button(second_frame,text="5",bg="black",fg="white",command=lambda : size_value("5"))
+        vsmall.grid(row=4,column=4)
+
+        add_to_cart=Button(second_frame,text="Add  to cart",bg="black",fg="white")
+        add_to_cart.grid(row=5,column=1,columnspan=4)
+
+
+
+        #-----------------------        Clearing the screen passing image --------------------
+
+def ball_description(product_image,product_price,product_info):
+        #============= clear the screen
+    for ele in main_frame.winfo_children():
+        ele.destroy()
+
+    ball_details_mainframe(product_image,product_price,product_info)
+
 def details_mainframe(product_image,product_price,product_info):
 
                 #--------------------- funtion to dipaly size
@@ -343,15 +408,15 @@ def search_frame():
                 l55.grid(row=6,column=2)
 
                 b7 = Button(second_frame, image=BB7, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(BB7,"Rs 5000","Sample Basketball Jersy(White)"))
-                b7.grid(row=7,column=0)
+                b7.grid(row=1,column=3)
                 price=Label(second_frame,text="Rs 5000")
-                price.grid(row=8,column=0)
+                price.grid(row=2,column=3)
                 l55=Label(second_frame,text="Sample Basketball Jersey(White)")
-                l55.grid(row=9,column=0)
+                l55.grid(row=3,column=3)
 
         if search_entry.get()=="ball" or search_entry.get()=="Ball" or search_entry.get()=="balls" or search_entry.get()=="Balls" or search_entry.get()=="BALL" or search_entry.get()=="BALLS":
 
-                b1 = Button(second_frame, image=Ball1, bg="white", borderwidth=0,command=lambda : description(Ball1,"Rs 1150","Wilson Ball"))
+                b1 = Button(second_frame, image=Ball1, bg="white", borderwidth=0,command=lambda : ball_description(Ball1,"Rs 1150","Wilson Ball"))
                 b1.grid(row=1,column=0)
                 price=Label(second_frame,text="Rs 1150")
                 price.grid(row=2,column=0)
@@ -359,7 +424,7 @@ def search_frame():
                 l11.grid(row=3,column=0)
 
 
-                b2 = Button(second_frame, image=Ball2, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(Ball2,"Rs 1150","NBA Ball"))
+                b2 = Button(second_frame, image=Ball2, bg="white", relief=GROOVE,borderwidth=0,command=lambda : ball_description(Ball2,"Rs 1150","NBA Ball"))
                 b2.grid(row=1,column=1)
                 price=Label(second_frame,text="Rs 1150")
                 price.grid(row=2,column=1)
@@ -367,7 +432,7 @@ def search_frame():
                 l22.grid(row=3,column=1)
 
 
-                b3 = Button(second_frame, image=Ball3, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(Ball3,"Rs 5000","Wilson Leather Ball"))
+                b3 = Button(second_frame, image=Ball3, bg="white", relief=GROOVE,borderwidth=0,command=lambda : ball_description(Ball3,"Rs 5000","Wilson Leather Ball"))
                 b3.grid(row=1,column=2)
                 price=Label(second_frame,text="Rs 5000")
                 price.grid(row=2,column=2)
@@ -375,7 +440,7 @@ def search_frame():
                 l33.grid(row=3,column=2)
 
 
-                b4 = Button(second_frame, image=Ball4, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(Ball4,"Rs 5000","Nike Elite Ball"))
+                b4 = Button(second_frame, image=Ball4, bg="white", relief=GROOVE,borderwidth=0,command=lambda : ball_description(Ball4,"Rs 5000","Nike Elite Ball"))
                 b4.grid(row=1,column=3)
                 price=Label(second_frame,text="Rs 5000")
                 price.grid(row=2,column=3)
@@ -384,7 +449,7 @@ def search_frame():
 
 
 
-                b5 = Button(second_frame, image=Ball5, bg="white", borderwidth=0,command=lambda : description(Ball5,"Rs 1150","NIKE PL BALL"))
+                b5 = Button(second_frame, image=Ball5, bg="white", borderwidth=0,command=lambda : ball_description(Ball5,"Rs 1150","NIKE PL BALL"))
                 b5.grid(row=4,column=0)
                 price=Label(second_frame,text="Rs 1150")
                 price.grid(row=5,column=0)
@@ -392,7 +457,7 @@ def search_frame():
                 l11.grid(row=6,column=0)
 
 
-                b6 = Button(second_frame, image=Ball6, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(Ball6,"Rs 1150","Addidas Telstar WC 18 Ball"))
+                b6 = Button(second_frame, image=Ball6, bg="white", relief=GROOVE,borderwidth=0,command=lambda : ball_description(Ball6,"Rs 1150","Addidas Telstar WC 18 Ball"))
                 b6.grid(row=4,column=1)
                 price=Label(second_frame,text="Rs 1150")
                 price.grid(row=5,column=1)
@@ -400,7 +465,7 @@ def search_frame():
                 l22.grid(row=6,column=1)
 
 
-                b7 = Button(second_frame, image=Ball7, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(Ball7,"Rs 5000","Classic Black & White Ball"))
+                b7 = Button(second_frame, image=Ball7, bg="white", relief=GROOVE,borderwidth=0,command=lambda : ball_description(Ball7,"Rs 5000","Classic Black & White Ball"))
                 b7.grid(row=4,column=2)
                 price=Label(second_frame,text="Rs 5000")
                 price.grid(row=5,column=2)
@@ -408,7 +473,7 @@ def search_frame():
                 l33.grid(row=6,column=2)
 
 
-                b8 = Button(second_frame, image=Ball8, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(Ball8,"Rs 5000","UEFA Ball"))
+                b8 = Button(second_frame, image=Ball8, bg="white", relief=GROOVE,borderwidth=0,command=lambda : ball_description(Ball8,"Rs 5000","UEFA Ball"))
                 b8.grid(row=4,column=3)
                 price=Label(second_frame,text="Rs 5000")
                 price.grid(row=5,column=3)
@@ -416,7 +481,7 @@ def search_frame():
                 l44.grid(row=6,column=3)
 
 
-                b9 = Button(second_frame, image=Ball9, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(Ball9,"Rs 5000","Addidas Euro 2020 Ball"))
+                b9 = Button(second_frame, image=Ball9, bg="white", relief=GROOVE,borderwidth=0,command=lambda : ball_description(Ball9,"Rs 5000","Addidas Euro 2020 Ball"))
                 b9.grid(row=7,column=0)
                 price=Label(second_frame,text="Rs 5000")
                 price.grid(row=8,column=0)
@@ -424,21 +489,21 @@ def search_frame():
                 l55.grid(row=9,column=0)
 
 
-                b10 = Button(second_frame, image=Ball10, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(Ball10,"Rs 5000","Addidas Brazuca WC 14 Ball"))
+                b10 = Button(second_frame, image=Ball10, bg="white", relief=GROOVE,borderwidth=0,command=lambda : ball_description(Ball10,"Rs 5000","Addidas Brazuca WC 14 Ball"))
                 b10.grid(row=7,column=1)
                 price=Label(second_frame,text="Rs 5000")
                 price.grid(row=8,column=1)
                 l44=Label(second_frame,text="Addidas Brazuca WC 14 Ball")
                 l44.grid(row=9,column=1)
 
-                b11 = Button(second_frame, image=Ball11, bg="white", borderwidth=0,command=lambda : description(Ball11,"Rs 1150","Alex Ball"))
+                b11 = Button(second_frame, image=Ball11, bg="white", borderwidth=0,command=lambda : ball_description(Ball11,"Rs 1150","Alex Ball"))
                 b11.grid(row=1,column=4)
                 price=Label(second_frame,text="Rs 1150")
                 price.grid(row=2,column=4)
                 l11=Label(second_frame,text="Alex Ball")
                 l11.grid(row=3,column=4)
 
-                b12 = Button(second_frame, image=Ball12, bg="white", borderwidth=0,command=lambda : description(Ball12,"Rs 1150","Puma Ball"))
+                b12 = Button(second_frame, image=Ball12, bg="white", borderwidth=0,command=lambda : ball_description(Ball12,"Rs 1150","Puma Ball"))
                 b12.grid(row=4,column=4)
                 price=Label(second_frame,text="Rs 1150")
                 price.grid(row=5,column=4)
@@ -482,7 +547,7 @@ def ball_frame():
 
         my_canvas.create_window((0, 800), window=second_frame)
 
-        b1 = Button(second_frame, image=Ball1, bg="white", borderwidth=0,command=lambda : description(Ball1,"Rs 1150","Wilson Ball"))
+        b1 = Button(second_frame, image=Ball1, bg="white", borderwidth=0,command=lambda : ball_description(Ball1,"Rs 1150","Wilson Ball"))
         b1.grid(row=1,column=0)
         price=Label(second_frame,text="Rs 1150")
         price.grid(row=2,column=0)
@@ -490,7 +555,7 @@ def ball_frame():
         l11.grid(row=3,column=0)
 
 
-        b2 = Button(second_frame, image=Ball2, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(Ball2,"Rs 1150","NBA Ball"))
+        b2 = Button(second_frame, image=Ball2, bg="white", relief=GROOVE,borderwidth=0,command=lambda : ball_description(Ball2,"Rs 1150","NBA Ball"))
         b2.grid(row=1,column=1)
         price=Label(second_frame,text="Rs 1150")
         price.grid(row=2,column=1)
@@ -498,7 +563,7 @@ def ball_frame():
         l22.grid(row=3,column=1)
 
 
-        b3 = Button(second_frame, image=Ball3, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(Ball3,"Rs 5000","Wilson Leather Ball"))
+        b3 = Button(second_frame, image=Ball3, bg="white", relief=GROOVE,borderwidth=0,command=lambda : ball_description(Ball3,"Rs 5000","Wilson Leather Ball"))
         b3.grid(row=1,column=2)
         price=Label(second_frame,text="Rs 5000")
         price.grid(row=2,column=2)
@@ -506,7 +571,7 @@ def ball_frame():
         l33.grid(row=3,column=2)
 
 
-        b4 = Button(second_frame, image=Ball4, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(Ball4,"Rs 5000","Nike Elite Ball"))
+        b4 = Button(second_frame, image=Ball4, bg="white", relief=GROOVE,borderwidth=0,command=lambda : ball_description(Ball4,"Rs 5000","Nike Elite Ball"))
         b4.grid(row=1,column=3)
         price=Label(second_frame,text="Rs 5000")
         price.grid(row=2,column=3)
@@ -515,7 +580,7 @@ def ball_frame():
 
 
 
-        b5 = Button(second_frame, image=Ball5, bg="white", borderwidth=0,command=lambda : description(Ball5,"Rs 1150","NIKE PL BALL"))
+        b5 = Button(second_frame, image=Ball5, bg="white", borderwidth=0,command=lambda : ball_description(Ball5,"Rs 1150","NIKE PL BALL"))
         b5.grid(row=4,column=0)
         price=Label(second_frame,text="Rs 1150")
         price.grid(row=5,column=0)
@@ -523,7 +588,7 @@ def ball_frame():
         l11.grid(row=6,column=0)
 
 
-        b6 = Button(second_frame, image=Ball6, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(Ball6,"Rs 1150","Addidas Telstar WC 18 Ball"))
+        b6 = Button(second_frame, image=Ball6, bg="white", relief=GROOVE,borderwidth=0,command=lambda : ball_description(Ball6,"Rs 1150","Addidas Telstar WC 18 Ball"))
         b6.grid(row=4,column=1)
         price=Label(second_frame,text="Rs 1150")
         price.grid(row=5,column=1)
@@ -531,7 +596,7 @@ def ball_frame():
         l22.grid(row=6,column=1)
 
 
-        b7 = Button(second_frame, image=Ball7, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(Ball7,"Rs 5000","Classic Black & White Ball"))
+        b7 = Button(second_frame, image=Ball7, bg="white", relief=GROOVE,borderwidth=0,command=lambda : ball_description(Ball7,"Rs 5000","Classic Black & White Ball"))
         b7.grid(row=4,column=2)
         price=Label(second_frame,text="Rs 5000")
         price.grid(row=5,column=2)
@@ -539,7 +604,7 @@ def ball_frame():
         l33.grid(row=6,column=2)
 
 
-        b8 = Button(second_frame, image=Ball8, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(Ball8,"Rs 5000","UEFA Ball"))
+        b8 = Button(second_frame, image=Ball8, bg="white", relief=GROOVE,borderwidth=0,command=lambda : ball_description(Ball8,"Rs 5000","UEFA Ball"))
         b8.grid(row=4,column=3)
         price=Label(second_frame,text="Rs 5000")
         price.grid(row=5,column=3)
@@ -547,7 +612,7 @@ def ball_frame():
         l44.grid(row=6,column=3)
 
 
-        b9 = Button(second_frame, image=Ball9, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(Ball9,"Rs 5000","Addidas Euro 2020 Ball"))
+        b9 = Button(second_frame, image=Ball9, bg="white", relief=GROOVE,borderwidth=0,command=lambda : ball_description(Ball9,"Rs 5000","Addidas Euro 2020 Ball"))
         b9.grid(row=7,column=0)
         price=Label(second_frame,text="Rs 5000")
         price.grid(row=8,column=0)
@@ -555,21 +620,21 @@ def ball_frame():
         l55.grid(row=9,column=0)
 
 
-        b10 = Button(second_frame, image=Ball10, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(Ball10,"Rs 5000","Addidas Brazuca WC 14 Ball"))
+        b10 = Button(second_frame, image=Ball10, bg="white", relief=GROOVE,borderwidth=0,command=lambda : ball_description(Ball10,"Rs 5000","Addidas Brazuca WC 14 Ball"))
         b10.grid(row=7,column=1)
         price=Label(second_frame,text="Rs 5000")
         price.grid(row=8,column=1)
         l44=Label(second_frame,text="Addidas Brazuca WC 14 Ball")
         l44.grid(row=9,column=1)
 
-        b11 = Button(second_frame, image=Ball11, bg="white", borderwidth=0,command=lambda : description(Ball11,"Rs 1150","Alex Ball"))
+        b11 = Button(second_frame, image=Ball11, bg="white", borderwidth=0,command=lambda : ball_description(Ball11,"Rs 1150","Alex Ball"))
         b11.grid(row=1,column=4)
         price=Label(second_frame,text="Rs 1150")
         price.grid(row=2,column=4)
         l11=Label(second_frame,text="Alex Ball")
         l11.grid(row=3,column=4)
 
-        b12 = Button(second_frame, image=Ball12, bg="white", borderwidth=0,command=lambda : description(Ball12,"Rs 1150","Puma Ball"))
+        b12 = Button(second_frame, image=Ball12, bg="white", borderwidth=0,command=lambda : ball_description(Ball12,"Rs 1150","Puma Ball"))
         b12.grid(row=4,column=4)
         price=Label(second_frame,text="Rs 1150")
         price.grid(row=5,column=4)
@@ -855,11 +920,11 @@ def Basketball_frame():
         l55.grid(row=6,column=2)
 
         b7 = Button(second_frame, image=BB7, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(BB7,"Rs 5000","Sample Basketball Jersy(White)"))
-        b7.grid(row=7,column=0)
+        b7.grid(row=1,column=3)
         price=Label(second_frame,text="Rs 5000")
-        price.grid(row=8,column=0)
+        price.grid(row=2,column=3)
         l55=Label(second_frame,text="Sample Basketball Jersey(White)")
-        l55.grid(row=9,column=0)
+        l55.grid(row=3,column=3)
 
 
 def mf_Basketball_window():
@@ -984,18 +1049,18 @@ B1 = Image.open("Dress\B1.jpg")
 B2 = Image.open("Dress\B2.jpg")
 
 
-F1 = F1.resize((400, 400), Image.ANTIALIAS)
-F2 = F2.resize((400, 400), Image.ANTIALIAS)
-F3 = F3.resize((400, 400), Image.ANTIALIAS)
-F4 = F4.resize((400, 400), Image.ANTIALIAS)
-F5 = F5.resize((400, 400), Image.ANTIALIAS)
-F6 = F6.resize((400, 400), Image.ANTIALIAS)
-F7 = F7.resize((400, 400), Image.ANTIALIAS)
-F8 = F8.resize((400, 400), Image.ANTIALIAS)
+F1 = F1.resize((380, 380), Image.ANTIALIAS)
+F2 = F2.resize((380, 380), Image.ANTIALIAS)
+F3 = F3.resize((380, 380), Image.ANTIALIAS)
+F4 = F4.resize((380, 380), Image.ANTIALIAS)
+F5 = F5.resize((380, 380), Image.ANTIALIAS)
+F6 = F6.resize((380, 380), Image.ANTIALIAS)
+F7 = F7.resize((380, 380), Image.ANTIALIAS)
+F8 = F8.resize((380, 380), Image.ANTIALIAS)
 
 
-B1 = B1.resize((400, 400), Image.ANTIALIAS)
-B2 = B2.resize((400, 400), Image.ANTIALIAS)
+B1 = B1.resize((380, 380), Image.ANTIALIAS)
+B2 = B2.resize((380, 380), Image.ANTIALIAS)
 
 F1 = ImageTk.PhotoImage(F1)
 F2 = ImageTk.PhotoImage(F2)
@@ -1078,14 +1143,14 @@ G8 = Image.open("Girl\F8.jpg")
 
 
 
-G1 = G1.resize((380, 380), Image.ANTIALIAS)
-G2 = G2.resize((400, 400), Image.ANTIALIAS)
-G3 = G3.resize((400, 400), Image.ANTIALIAS)
-G4 = G4.resize((400, 400), Image.ANTIALIAS)
-G5 = G5.resize((400, 400), Image.ANTIALIAS)
-G6 = G6.resize((400, 400), Image.ANTIALIAS)
-G7 = G7.resize((400, 400), Image.ANTIALIAS)
-G8 = G8.resize((400, 400), Image.ANTIALIAS)
+G1 = G1.resize((370, 370), Image.ANTIALIAS)
+G2 = G2.resize((370, 370), Image.ANTIALIAS)
+G3 = G3.resize((370, 370), Image.ANTIALIAS)
+G4 = G4.resize((370, 370), Image.ANTIALIAS)
+G5 = G5.resize((370, 370), Image.ANTIALIAS)
+G6 = G6.resize((370, 370), Image.ANTIALIAS)
+G7 = G7.resize((370, 370), Image.ANTIALIAS)
+G8 = G8.resize((370, 370), Image.ANTIALIAS)
 
 
 
@@ -1116,13 +1181,13 @@ BB7 = Image.open("Dress\B7.jpg")
 
 
 
-BB1 = BB1.resize((400, 400), Image.ANTIALIAS)
-BB2 = BB2.resize((400, 400), Image.ANTIALIAS)
-BB3 = BB3.resize((400, 400), Image.ANTIALIAS)
-BB4 = BB4.resize((400, 400), Image.ANTIALIAS)
-BB5 = BB5.resize((400, 400), Image.ANTIALIAS)
-BB6 = BB6.resize((400, 400), Image.ANTIALIAS)
-BB7 = BB7.resize((400, 400), Image.ANTIALIAS)
+BB1 = BB1.resize((380, 380), Image.ANTIALIAS)
+BB2 = BB2.resize((380, 380), Image.ANTIALIAS)
+BB3 = BB3.resize((380, 380), Image.ANTIALIAS)
+BB4 = BB4.resize((380, 380), Image.ANTIALIAS)
+BB5 = BB5.resize((380, 380), Image.ANTIALIAS)
+BB6 = BB6.resize((380, 380), Image.ANTIALIAS)
+BB7 = BB7.resize((380, 380), Image.ANTIALIAS)
 
 
 
