@@ -392,11 +392,11 @@ def search_frame():
 
 
                 b4 = Button(second_frame, image=BB4, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(BB4,"Rs 5000","Nike Raptors Toronto Jesrey(White)"))
-                b4.grid(row=4,column=0)
+                b4.grid(row=7,column=3)
                 price=Label(second_frame,text="Rs 5000")
-                price.grid(row=5,column=0)
+                price.grid(row=8,column=3)
                 l44=Label(second_frame,text="Nike Raptors Toronto Jesrey(White)")
-                l44.grid(row=6,column=0)
+                l44.grid(row=9,column=3)
 
 
                 b5 = Button(second_frame, image=BB5, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(BB5,"Rs 5000","Nike Dallas Jersy(Blue)"))
@@ -408,11 +408,11 @@ def search_frame():
 
 
                 b6 = Button(second_frame,image=BB6, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(BB6,"Rs 500","Nike Villanova Jersey(Blue)"))
-                b6.grid(row=4,column=2)
+                b6.grid(row=7,column=2)
                 price=Label(second_frame,text="Rs 5000")
-                price.grid(row=5,column=2)
+                price.grid(row=8,column=2)
                 l55=Label(second_frame,text="Nike Villanova Jersey(Blue)")
-                l55.grid(row=6,column=2)
+                l55.grid(row=9,column=2)
 
                 b7 = Button(second_frame, image=BB7, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(BB7,"Rs 5000","Sample Basketball Jersy(White)"))
                 b7.grid(row=1,column=3)
@@ -420,6 +420,58 @@ def search_frame():
                 price.grid(row=2,column=3)
                 l55=Label(second_frame,text="Sample Basketball Jersey(White)")
                 l55.grid(row=3,column=3)
+
+
+
+
+                b1 = Button(second_frame, image=FB1, bg="white", borderwidth=0,command=lambda : description(FB1,"Rs 1150","Starter Jersy(Black)"))
+                b1.grid(row=4,column=3)
+                price=Label(second_frame,text="Rs 1150")
+                price.grid(row=5,column=3)
+                l11=Label(second_frame,text="Starter Jersy(Black)")
+                l11.grid(row=6,column=3)
+
+
+                b2 = Button(second_frame, image=FB2, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(FB2,"Rs 1150","Pirates Jersey(White)"))
+                b2.grid(row=7,column=1)
+                price=Label(second_frame,text="Rs 1150")
+                price.grid(row=8,column=1)
+                l22=Label(second_frame,text="Pirates Jersey(White)")
+                l22.grid(row=9,column=1)
+
+
+                b3 = Button(second_frame, image=FB3, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(FB3,"Rs 5000","NewYork Jersey(Blue)"))
+                b3.grid(row=4,column=2)
+                price=Label(second_frame,text="Rs 5000")
+                price.grid(row=5,column=2)
+                l33=Label(second_frame,text="NewYork Jersey(Blue)")
+                l33.grid(row=6,column=2)
+
+
+                b4 = Button(second_frame, image=FB4, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(FB4,"Rs 5000","Cincinnati Jesrey(Black)"))
+                b4.grid(row=4,column=0)
+                price=Label(second_frame,text="Rs 5000")
+                price.grid(row=5,column=0)
+                l44=Label(second_frame,text="Cincinnati Jesrey(Black)")
+                l44.grid(row=6,column=0)
+
+
+                b5 = Button(second_frame, image=FB5, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(FB5,"Rs 5000","UNBC Jersy(Black)"))
+                b5.grid(row=4,column=3)
+                price=Label(second_frame,text="Rs 5000")
+                price.grid(row=5,column=3)
+                l55=Label(second_frame,text="UNBC Jersy(Black)")
+                l55.grid(row=6,column=3)
+
+
+                b6 = Button(second_frame,image=FB6, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(FB6,"Rs 500","Charlotte Jersey(Blue)"))
+                b6.grid(row=7,column=0)
+                price=Label(second_frame,text="Rs 5000")
+                price.grid(row=8,column=0)
+                l55=Label(second_frame,text="Charlotte Jersey(Blue)")
+                l55.grid(row=9,column=0)
+
+
 
         if search_entry.get()=="ball" or search_entry.get()=="Ball" or search_entry.get()=="balls" or search_entry.get()=="Balls" or search_entry.get()=="BALL" or search_entry.get()=="BALLS":
 
@@ -883,6 +935,94 @@ def Basketball_frame():
         my_canvas.create_window((0,880), window=second_frame)
 
         
+        b1 = Button(second_frame, image=FB1, bg="white", borderwidth=0,command=lambda : description(FB1,"Rs 1150","Starter Jersy(Black)"))
+        b1.grid(row=1,column=0)
+        price=Label(second_frame,text="Rs 1150")
+        price.grid(row=2,column=0)
+        l11=Label(second_frame,text="Starter Jersy(Black)")
+        l11.grid(row=3,column=0)
+
+
+        b2 = Button(second_frame, image=FB2, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(FB2,"Rs 1150","Pirates Jersey(White)"))
+        b2.grid(row=1,column=1)
+        price=Label(second_frame,text="Rs 1150")
+        price.grid(row=2,column=1)
+        l22=Label(second_frame,text="Pirates Jersey(White)")
+        l22.grid(row=3,column=1)
+
+
+        b3 = Button(second_frame, image=FB3, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(FB3,"Rs 5000","NewYork Jersey(Blue)"))
+        b3.grid(row=1,column=2)
+        price=Label(second_frame,text="Rs 5000")
+        price.grid(row=2,column=2)
+        l33=Label(second_frame,text="NewYork Jersey(Blue)")
+        l33.grid(row=3,column=2)
+
+
+        b4 = Button(second_frame, image=FB4, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(FB4,"Rs 5000","Cincinnati Jesrey(Black)"))
+        b4.grid(row=4,column=0)
+        price=Label(second_frame,text="Rs 5000")
+        price.grid(row=5,column=0)
+        l44=Label(second_frame,text="Cincinnati Jesrey(Black)")
+        l44.grid(row=6,column=0)
+
+
+        b5 = Button(second_frame, image=FB5, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(FB5,"Rs 5000","UNBC Jersy(Black)"))
+        b5.grid(row=4,column=1)
+        price=Label(second_frame,text="Rs 5000")
+        price.grid(row=5,column=1)
+        l55=Label(second_frame,text="UNBC Jersy(Black)")
+        l55.grid(row=6,column=1)
+
+
+        b6 = Button(second_frame,image=FB6, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(FB6,"Rs 500","Charlotte Jersey(Blue)"))
+        b6.grid(row=1,column=3)
+        price=Label(second_frame,text="Rs 5000")
+        price.grid(row=2,column=3)
+        l55=Label(second_frame,text="Charlotte Jersey(Blue)")
+        l55.grid(row=3,column=3)
+
+       
+
+
+def mf_Basketball_window():
+
+        for ele in main_frame.winfo_children():
+            ele.destroy()
+
+        Basketball_frame()
+
+
+
+
+
+
+
+def FBasketball_frame():
+        
+        global main_frame
+
+
+                #----------------    Creating a Frame  --------------------------
+
+        main_frame = Frame(root,bg="#ffffff")
+        main_frame.place(x=0, y=90)
+
+        my_canvas = Canvas(main_frame, width=1500, height=740,bg="#ffffff")
+        my_canvas.pack(side=LEFT, fill=BOTH)
+
+        my_scrollbar = ttk.Scrollbar(main_frame, orient=VERTICAL, command=my_canvas.yview)
+        my_scrollbar.pack(side=RIGHT, padx=5, fill=Y)
+
+        my_canvas.configure(yscrollcommand=my_scrollbar.set)
+        my_canvas.bind('<Configure>', lambda e: my_canvas.configure(scrollregion=my_canvas.bbox("all")))        
+
+        second_frame = Frame(my_canvas, width=1500, height=740,bg="#ffffff")
+
+
+        my_canvas.create_window((0,880), window=second_frame)
+
+        
         b1 = Button(second_frame, image=BB1, bg="white", borderwidth=0,command=lambda : description(BB1,"Rs 1150","Nike LA Lakers Jersy(Yellow)"))
         b1.grid(row=1,column=0)
         price=Label(second_frame,text="Rs 1150")
@@ -938,12 +1078,13 @@ def Basketball_frame():
         l55.grid(row=3,column=3)
 
 
-def mf_Basketball_window():
+def f_Basketball_window():
 
         for ele in main_frame.winfo_children():
             ele.destroy()
 
-        Basketball_frame()
+        FBasketball_frame()
+
 
 
 
@@ -1212,6 +1353,41 @@ BB5 = ImageTk.PhotoImage(BB5)
 BB6 = ImageTk.PhotoImage(BB6)
 BB7 = ImageTk.PhotoImage(BB7)
 
+#------------------women basketball products-----------------------
+
+
+FB1 = Image.open("Bgirl\B1.jpg")
+FB2 = Image.open("Bgirl\B2.jpg")
+FB3 = Image.open("Bgirl\B3.jpg")
+FB4 = Image.open("Bgirl\B4.jpg")
+FB5 = Image.open("Bgirl\B5.jpg")
+FB6 = Image.open("Bgirl\B6.jpg")
+
+
+
+
+
+
+FB1 = FB1.resize((380, 380), Image.ANTIALIAS)
+FB2 = FB2.resize((380, 380), Image.ANTIALIAS)
+FB3 = FB3.resize((380, 380), Image.ANTIALIAS)
+FB4 = FB4.resize((380, 380), Image.ANTIALIAS)
+FB5 = FB5.resize((380, 380), Image.ANTIALIAS)
+FB6 = FB6.resize((380, 380), Image.ANTIALIAS)
+
+
+
+
+
+
+
+FB1 = ImageTk.PhotoImage(FB1)
+FB2= ImageTk.PhotoImage(FB2)
+FB3 = ImageTk.PhotoImage(FB3)
+FB4= ImageTk.PhotoImage(FB4)
+FB5 = ImageTk.PhotoImage(FB5)
+FB6 = ImageTk.PhotoImage(FB6)
+
 
 
 
@@ -1287,7 +1463,7 @@ mb2.add_separator()
 mb2.add_command(label="Balls", activebackground="black", activeforeground="white")
 
 mb0 = Menu(mb1, tearoff=0, bg="white", fg="black")
-mb0.add_command(label="Wear", activebackground="black", activeforeground="white",command=mf_Basketball_window)
+mb0.add_command(label="Wear", activebackground="black", activeforeground="white",command=f_Basketball_window)
 mb0.add_separator()
 mb0.add_command(label="Balls", activebackground="black", activeforeground="white")
 
