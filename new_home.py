@@ -328,21 +328,21 @@ def search_frame():
 
 
                 b11 = Button(second_frame, image=G5, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(G5,"Rs 5000","Addidas Belgium Home Jersey(Red)"))
-                b11.grid(row=10,column=2)
+                b11.grid(row=10,column=1)
                 price=Label(second_frame,text="Rs 5000")
-                price.grid(row=11,column=2)
+                price.grid(row=11,column=1)
                 l55=Label(second_frame,text="Addidas Belgium Home Jersey(Red)")
-                l55.grid(row=12,column=2)
+                l55.grid(row=12,column=1)
 
 
 
 
                 b12 = Button(second_frame, image=G6, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(G6,"Rs 5000","Nike Livepool Jersey(Red)"))
-                b12.grid(row=10,column=3)
+                b12.grid(row=10,column=2)
                 price=Label(second_frame,text="Rs 5000")
-                price.grid(row=11,column=3)
+                price.grid(row=11,column=2)
                 l55=Label(second_frame,text="Nike Livepool Jersey(Red)")
-                l55.grid(row=12,column=3)
+                l55.grid(row=12,column=2)
 
                 b13 = Button(second_frame, image=G7, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(G7,"Rs 5000","Nike Chelsea Jersey(Blue)"))
                 b13.grid(row=10,column=0)
