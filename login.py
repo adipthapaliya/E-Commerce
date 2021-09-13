@@ -3,7 +3,7 @@ from PIL import ImageTk,Image
 import sqlite3
 from tkinter import messagebox
 import subprocess
-from subprocess import Popen, PIPE
+
 #============== Main Window ===============
 
 
@@ -23,7 +23,7 @@ c=conn.cursor()
         
 #         name String NOT NULL,
 #         username String PRIMARY KEY,
-#         email String NOT NULL,
+#         adress String NOT NULL,
 #         phoneno Integer NOT NULL,
 #         password String NOT NULL
 
@@ -56,7 +56,11 @@ def login():
    print(username_entry.get())
    user = c.fetchone()
 
-   while len(user)==0:
+   if username_entry.get()=="admin" and password_entry.get()=="admin":
+
+      run_admin()
+
+   while not user:
 
       messagebox.showerror("Invalid","Invalid username or password")
 
@@ -64,9 +68,7 @@ def login():
 
       c.execute('SELECT 1 FROM login WHERE username = ? AND password = ?',(username_entry.get(),password_entry.get()))
 
-   if username_entry.get()=="admin" and password_entry.get()=="admin":
 
-      run_admin()
    
    else:
       
@@ -130,8 +132,6 @@ or_register_label.place(x=155,y=500)
 
 signup_button=Button(root,image=signup_img,borderwidth=0,command=run_register)
 signup_button.place(x=80,y=525)
-
-
 
 
 conn.commit()

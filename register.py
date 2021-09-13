@@ -22,20 +22,20 @@ c=conn.cursor()
         
 #         name String NOT NULL,
 #         username String PRIMARY KEY,
-#         email String NOT NULL,
+#         adress String NOT NULL,
 #         phoneno Integer NOT NULL,
 #         password String NOT NULL
 
 #         )""")
 def run_register():
    root.destroy()
-   subprocess.call(["python","register_test.py"])
+   subprocess.call(["python","register.py"])
 
 
 
 def run_login():
     root.destroy()
-    subprocess.call(["python","login_test.py"])
+    subprocess.call(["python","login.py"])
 
 
 def register():
@@ -55,12 +55,12 @@ def register():
         c.execute('SELECT 1 FROM login WHERE username = ?',(usernameR_entry.get(),))
 
 
-    c.execute("INSERT INTO login VALUES(:name, :username, :email, :phoneno, :password)",
+    c.execute("INSERT INTO login VALUES(:name, :username, :adress, :phoneno, :password)",
         
                 {
                     "name": name_entry.get(),
                     "username": usernameR_entry.get(),
-                    "email": email_entry.get(),
+                    "adress": adress_entry.get(),
                     "phoneno": phoneno_entry.get(),
                     "password": password_entry.get()
                 }
@@ -71,7 +71,7 @@ def register():
     
     name_entry.delete(0,END)
     usernameR_entry.delete(0,END)
-    email_entry.delete(0,END)
+    adress_entry.delete(0,END)
     phoneno_entry.delete(0,END)
     password_entry.delete(0,END)
 
@@ -130,10 +130,10 @@ usernameR_label.place(x=4,y=305)
 usernameR_entry=Entry(root,font=Canvas,bg="#E1D9D1",width=35)
 usernameR_entry.place(x=4,y=330)
 
-email_label=Label(root,text="Email",font=(Canvas,12))
-email_label.place(x=4,y=360)
-email_entry=Entry(root,font=Canvas,bg="#E1D9D1",width=35)
-email_entry.place(x=4,y=385)
+adress_label=Label(root,text="Adress",font=(Canvas,12))
+adress_label.place(x=4,y=360)
+adress_entry=Entry(root,font=Canvas,bg="#E1D9D1",width=35)
+adress_entry.place(x=4,y=385)
 
 phoneno_label=Label(root,text="Phone no",font=(Canvas,12))
 phoneno_label.place(x=4,y=415)

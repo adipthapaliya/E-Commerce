@@ -1,6 +1,4 @@
 
-from os import error
-from sqlite3.dbapi2 import Row
 from tkinter import *
 from PIL import Image,ImageTk
 import subprocess
@@ -8,6 +6,7 @@ import sqlite3
 import random
 from tkinter import ttk
 from argparse import ArgumentParser
+from tkinter import messagebox
 
 
 
@@ -39,6 +38,55 @@ def back_home():
         ele.destroy()
 
     mainframe()
+
+
+
+        #---------------        Cart    ------------------------------------
+
+
+# def cart_window(product_image,product_price,product_info):
+
+#         global main_frame
+
+#         main_frame = Frame(root,bg="#ffffff")
+#         main_frame.place(x=0, y=90)
+
+#         my_canvas = Canvas(main_frame, width=1500, height=740,bg="#ffffff")
+#         my_canvas.pack(side=LEFT, fill=BOTH)
+
+#         my_scrollbar = ttk.Scrollbar(main_frame, orient=VERTICAL, command=my_canvas.yview)
+#         my_scrollbar.pack(side=RIGHT, padx=5, fill=Y)
+
+#         my_canvas.configure(yscrollcommand=my_scrollbar.set)
+#         my_canvas.bind('<Configure>', lambda e: my_canvas.configure(scrollregion=my_canvas.bbox("all")))        
+
+#         second_frame = Frame(my_canvas, width=1500, height=740,bg="#ffffff")
+
+
+#         my_canvas.create_window((0, 0), window=second_frame)
+
+#         b1 = Label(second_frame, image=product_image, bg="white", borderwidth=0)
+#         b1.grid(row=1,column=0)
+#         price=Label(second_frame,text=product_price)
+#         price.grid(row=2,column=0)
+#         l11=Label(second_frame,text=product_info)
+#         l11.grid(row=3,column=0)
+        
+
+
+# def cart_frame(product_image,product_price,product_info):
+#     for ele in main_frame.winfo_children():
+#         ele.destroy()
+
+#     cart_window(product_image,product_price,product_info)
+
+
+        #-----------------------     Cart     --------------------------- 
+
+
+                #------------------      adding cart function        ----------------- 
+def add_to_cart():
+        messagebox.showinfo("ITEM","Product added to cart sucessfully")
 
 
 
@@ -76,10 +124,10 @@ def ball_details_mainframe(product_image,product_price,product_info):
         passed_image.grid(row=0,column=0,ipadx=40,ipady=70,rowspan=10)
 
         passed_image_price=Label(second_frame,text=product_price)
-        passed_image_price.grid(row=1,column=1,columnspan=4)
+        passed_image_price.grid(row=1,column=1,columnspan=5)
 
         passed_image_info=Label(second_frame,text=product_info)
-        passed_image_info.grid(row=2,column=1,columnspan=4)
+        passed_image_info.grid(row=2,column=1,columnspan=5)
 
         size_label=Label(second_frame,text="Size")
         size_label.grid(row=3,column=1)
@@ -95,8 +143,12 @@ def ball_details_mainframe(product_image,product_price,product_info):
         vsmall=Button(second_frame,text="5",bg="black",fg="white",command=lambda : size_value("5"))
         vsmall.grid(row=4,column=4)
 
+        buy_now=Button(second_frame,text="Buy Now",bg="black",fg="white")
+        buy_now.grid(row=5,column=1,columnspan=1)
+
         add_to_cart=Button(second_frame,text="Add  to cart",bg="black",fg="white")
-        add_to_cart.grid(row=5,column=1,columnspan=4)
+        add_to_cart.grid(row=5,column=2,columnspan=1)
+
 
 
 
@@ -141,10 +193,10 @@ def details_mainframe(product_image,product_price,product_info):
         passed_image.grid(row=0,column=0,ipadx=40,ipady=70,rowspan=10)
 
         passed_image_price=Label(second_frame,text=product_price)
-        passed_image_price.grid(row=1,column=1,columnspan=3)
+        passed_image_price.grid(row=1,column=1,columnspan=5)
 
         passed_image_info=Label(second_frame,text=product_info)
-        passed_image_info.grid(row=2,column=1,columnspan=3)
+        passed_image_info.grid(row=2,column=1,columnspan=5)
 
         size_label=Label(second_frame,text="Size")
         size_label.grid(row=3,column=1)
@@ -158,8 +210,11 @@ def details_mainframe(product_image,product_price,product_info):
         small=Button(second_frame,text="small",bg="black",fg="white",command=lambda : size_value("S"))
         small.grid(row=4,column=3)
 
+        buy_now=Button(second_frame,text="Buy Now",bg="black",fg="white")
+        buy_now.grid(row=5,column=1,columnspan=1)
+
         add_to_cart=Button(second_frame,text="Add  to cart",bg="black",fg="white")
-        add_to_cart.grid(row=5,column=1,columnspan=3)
+        add_to_cart.grid(row=5,column=2,columnspan=1)
 
 
 
@@ -174,50 +229,10 @@ def description(product_image,product_price,product_info):
 
 
 
-        #-----------------------     Cart     --------------------------- 
-
-
-                #------------------      adding cart function        ----------------- 
-def add_to_cart():
-        pass
-
-
 
 
                 #-------------------    for your prodcut cart     --------------------------------
 
-def cart_window():
-
-        global main_frame
-
-        main_frame = Frame(root,bg="#ffffff")
-        main_frame.place(x=0, y=90)
-
-        my_canvas = Canvas(main_frame, width=1500, height=740,bg="#ffffff")
-        my_canvas.pack(side=LEFT, fill=BOTH)
-
-        my_scrollbar = ttk.Scrollbar(main_frame, orient=VERTICAL, command=my_canvas.yview)
-        my_scrollbar.pack(side=RIGHT, padx=5, fill=Y)
-
-        my_canvas.configure(yscrollcommand=my_scrollbar.set)
-        my_canvas.bind('<Configure>', lambda e: my_canvas.configure(scrollregion=my_canvas.bbox("all")))        
-
-        second_frame = Frame(my_canvas, width=1500, height=740,bg="#ffffff")
-
-
-        my_canvas.create_window((0, 0), window=second_frame)
-
-        add_to_cart=Button(second_frame,text="Add  to cart")
-        add_to_cart.grid(row=1,column=1)
-        
-
-
-def cart_frame():
-    for ele in main_frame.winfo_children():
-        ele.destroy()
-
-    cart_window()
-                
 
 
 
@@ -365,7 +380,7 @@ def search_frame():
                 l44=Label(second_frame,text="Adiddas Ronaldo Manchester United Jersy(Red)")
                 l44.grid(row=3,column=3)
                 
-        if search_entry.get()=="basketball" or search_entry.get()=="Basketball":
+        elif search_entry.get()=="basketball" or search_entry.get()=="Basketball":
 
                 b1 = Button(second_frame, image=BB1, bg="white", borderwidth=0,command=lambda : description(BB1,"Rs 1150","Nike LA Lakers Jersy(Yellow)"))
                 b1.grid(row=1,column=0)
@@ -473,7 +488,7 @@ def search_frame():
 
 
 
-        if search_entry.get()=="ball" or search_entry.get()=="Ball" or search_entry.get()=="balls" or search_entry.get()=="Balls" or search_entry.get()=="BALL" or search_entry.get()=="BALLS":
+        elif search_entry.get()=="ball" or search_entry.get()=="Ball" or search_entry.get()=="balls" or search_entry.get()=="Balls" or search_entry.get()=="BALL" or search_entry.get()=="BALLS":
 
                 b1 = Button(second_frame, image=Ball1, bg="white", borderwidth=0,command=lambda : ball_description(Ball1,"Rs 1150","Wilson Ball"))
                 b1.grid(row=1,column=0)
@@ -567,11 +582,11 @@ def search_frame():
                 price=Label(second_frame,text="Rs 1150")
                 price.grid(row=5,column=4)
                 l11=Label(second_frame,text="Puma Ball")
-                l11.grid(row=6,column=4)
+                l11.grid(row=6,column=4)  
         
-        if search_entry.get()!="football" or search_entry.get()!="Football" or search_entry.get()!="soccer" or search_entry.get()!="basketball" or search_entry.get()!="Basketball" or search_entry.get()!="ball" or search_entry.get()!="balls" or search_entry.get()!="Ball" or  search_entry.get()!="Basketball" or search_entry.get()!="ball" or search_entry.get()!="balls" or search_entry.get()!="Balls" or search_entry.get()!="Basketball" or search_entry.get()!="ball" or search_entry.get()!="balls" or search_entry.get()!="BALL" or search_entry.get()!="Basketball" or search_entry.get()!="ball" or search_entry.get()!="balls" or search_entry.get()!="BALLS":
-                error_label=Label(second_frame,text="Opps! Cant't find the item (TRY AGAIN)")
-                error_label.grid(row=0,column=0)
+        else:
+                error_label=Label(second_frame,text="Opps! Can't find the item (TRY AGAIN)",justify=CENTER,font=(50))
+                error_label.place(x=600,y=70)
 
                 
                         
@@ -1409,7 +1424,7 @@ search_entry.place(x=320,y=0,height=50)
 search_button=Button(root,image=search_img,borderwidth=0,command=search_window)
 search_button.place(x=1160,y=0)
 
-cart_button=Button(root,image=cart_img,borderwidth=0,command=cart_frame)
+cart_button=Button(root,image=cart_img,borderwidth=0)
 cart_button.place(x=1250,y=0)
 
 contact_button=Button(root,image=contact_img,borderwidth=0)
