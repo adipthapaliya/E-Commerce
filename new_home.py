@@ -20,6 +20,13 @@ root.state("zoomed")
 root.resizable(False,False)
 root.config(bg="#ffffff")
 
+
+
+
+
+
+
+
 #========================================     ALL Funtions     ============================================================
 
         #--------------     Login Page   -----------------------------
@@ -44,41 +51,36 @@ def back_home():
         #---------------        Cart    ------------------------------------
 
 
-# def cart_window(product_image,product_price,product_info):
+def cart_window(product_image,product_price,product_info):
 
-#         global main_frame
+        global main_frame
 
-#         main_frame = Frame(root,bg="#ffffff")
-#         main_frame.place(x=0, y=90)
+        main_frame = Frame(root,bg="#ffffff")
+        main_frame.place(x=0, y=90)
 
-#         my_canvas = Canvas(main_frame, width=1500, height=740,bg="#ffffff")
-#         my_canvas.pack(side=LEFT, fill=BOTH)
+        my_canvas = Canvas(main_frame, width=1500, height=740,bg="#ffffff")
+        my_canvas.pack(side=LEFT, fill=BOTH)
 
-#         my_scrollbar = ttk.Scrollbar(main_frame, orient=VERTICAL, command=my_canvas.yview)
-#         my_scrollbar.pack(side=RIGHT, padx=5, fill=Y)
+        my_scrollbar = ttk.Scrollbar(main_frame, orient=VERTICAL, command=my_canvas.yview)
+        my_scrollbar.pack(side=RIGHT, padx=5, fill=Y)
 
-#         my_canvas.configure(yscrollcommand=my_scrollbar.set)
-#         my_canvas.bind('<Configure>', lambda e: my_canvas.configure(scrollregion=my_canvas.bbox("all")))        
+        my_canvas.configure(yscrollcommand=my_scrollbar.set)
+        my_canvas.bind('<Configure>', lambda e: my_canvas.configure(scrollregion=my_canvas.bbox("all")))        
 
-#         second_frame = Frame(my_canvas, width=1500, height=740,bg="#ffffff")
+        second_frame = Frame(my_canvas, width=1500, height=740,bg="#ffffff")
 
 
-#         my_canvas.create_window((0, 0), window=second_frame)
+        my_canvas.create_window((0, 0), window=second_frame)
 
-#         b1 = Label(second_frame, image=product_image, bg="white", borderwidth=0)
-#         b1.grid(row=1,column=0)
-#         price=Label(second_frame,text=product_price)
-#         price.grid(row=2,column=0)
-#         l11=Label(second_frame,text=product_info)
-#         l11.grid(row=3,column=0)
+        
         
 
 
-# def cart_frame(product_image,product_price,product_info):
-#     for ele in main_frame.winfo_children():
-#         ele.destroy()
+def cart_frame(product_image,product_price,product_info):
+    for ele in main_frame.winfo_children():
+        ele.destroy()
 
-#     cart_window(product_image,product_price,product_info)
+    cart_window(product_image,product_price,product_info)
 
 
         #-----------------------     Cart     --------------------------- 
@@ -91,6 +93,7 @@ def add_to_cart():
 
 
         #--------------   Product Details Function ----------------------
+
 
 def ball_details_mainframe(product_image,product_price,product_info):
 
@@ -160,6 +163,8 @@ def ball_description(product_image,product_price,product_info):
         ele.destroy()
 
     ball_details_mainframe(product_image,product_price,product_info)
+
+
 
 def details_mainframe(product_image,product_price,product_info):
 
@@ -590,8 +595,6 @@ def search_frame():
 
                 
                         
-
-
 def search_window():
 
         if search_entry.get()=="":
@@ -602,6 +605,8 @@ def search_window():
                         ele.destroy()
 
                 search_frame()
+
+
 
 
 def ball_frame():
@@ -727,6 +732,7 @@ def ball_window():
     ball_frame()
 
 
+
 def men_football_frame():
 
         global main_frame
@@ -825,6 +831,8 @@ def m_football_window():
 
         men_football_frame()
 
+
+
 def female_football_frame():
         
         global main_frame
@@ -912,9 +920,6 @@ def female_football_frame():
         l55=Label(second_frame,text="Addidas Belgium Home Jersey(Red)")
         l55.grid(row=3,column=3)
 
-
-
-
 def f_football_window():
 
         for ele in main_frame.winfo_children():
@@ -998,15 +1003,12 @@ def Basketball_frame():
         l55.grid(row=3,column=3)
 
        
-
-
 def mf_Basketball_window():
 
         for ele in main_frame.winfo_children():
             ele.destroy()
 
         Basketball_frame()
-
 
 
 
@@ -1110,12 +1112,6 @@ def f_Basketball_window():
 
 
 
-
-
-
-
-
-
 #=====================================        Database        ================================================================
 
 conn=sqlite3.connect('register.db')
@@ -1147,7 +1143,6 @@ parser.add_argument("-u", "--user")
 
 args = vars(parser.parse_args())
 user = args['user']
-
 
 
 
@@ -1410,9 +1405,6 @@ FB6 = ImageTk.PhotoImage(FB6)
 
 
 
-
-
-
         #------------------------   Headlines    ------------------------------
 
 logo_button=Button(root,image=logo_img,borderwidth=0,command=back_home)
@@ -1424,7 +1416,7 @@ search_entry.place(x=320,y=0,height=50)
 search_button=Button(root,image=search_img,borderwidth=0,command=search_window)
 search_button.place(x=1160,y=0)
 
-cart_button=Button(root,image=cart_img,borderwidth=0)
+cart_button=Button(root,image=cart_img,borderwidth=0,command=cart_frame)
 cart_button.place(x=1250,y=0)
 
 contact_button=Button(root,image=contact_img,borderwidth=0)
@@ -1642,6 +1634,8 @@ def mainframe():
 
 
 mainframe()
+
+
 
 
 
