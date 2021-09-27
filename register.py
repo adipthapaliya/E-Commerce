@@ -24,7 +24,8 @@ c=conn.cursor()
 #         username String PRIMARY KEY,
 #         adress String NOT NULL,
 #         phoneno Integer NOT NULL,
-#         password String NOT NULL
+#         password String NOT NULL,
+
 
 #         )""")
 def run_register():
@@ -55,14 +56,15 @@ def register():
         c.execute('SELECT 1 FROM login WHERE username = ?',(usernameR_entry.get(),))
 
 
-    c.execute("INSERT INTO login VALUES(:name, :username, :adress, :phoneno, :password)",
+    c.execute("INSERT INTO login VALUES(:name, :username, :adress, :phoneno, :password, :product_list)",
         
                 {
                     "name": name_entry.get(),
                     "username": usernameR_entry.get(),
                     "adress": adress_entry.get(),
                     "phoneno": phoneno_entry.get(),
-                    "password": password_entry.get()
+                    "password": password_entry.get(),
+                    
                 }
         
         )
@@ -88,6 +90,8 @@ def register():
 #=============================================== GUI Of Login page =================================================================
 
 #===========Image=======
+
+
 
 facebook=Image.open("Login/facebook.png")
 google=Image.open("Login/google.png")

@@ -25,7 +25,8 @@ c=conn.cursor()
 #         username String PRIMARY KEY,
 #         adress String NOT NULL,
 #         phoneno Integer NOT NULL,
-#         password String NOT NULL
+#         password String NOT NULL,
+
 
 #         )""")
 
@@ -42,8 +43,9 @@ def run_admin():
    subprocess.call(["python","admin.py"])
 
 def open(user):
+   
    root.destroy()
-   subprocess.call(["python","home.py", "--user", user[1]])
+   subprocess.call(["python","new_home.py", "--user", user[1]])
    
 
 def login():
@@ -117,7 +119,7 @@ forget_password_button.place(x=280,y=220)
 login_button=Button(root,image=login_img,borderwidth=0,command=login)
 login_button.place(x=80,y=250)
 
-or_signup_label=Label(root,text="or sigh up using")
+or_signup_label=Label(root,text="or sign up using")
 or_signup_label.place(x=150,y=310)
 
 facebook_button=Button(root,image=facebook_img,borderwidth=0)

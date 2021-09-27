@@ -21,6 +21,37 @@ root.resizable(False,False)
 root.config(bg="#ffffff")
 
 
+#=====================================        Database        ================================================================
+
+conn=sqlite3.connect('register.db')
+
+c=conn.cursor()
+
+
+
+
+        #--------------------        Table for database       -------------------
+
+# c.execute(""" CREATE TABLE login(
+        
+#         name String NOT NULL,
+#         username String PRIMARY KEY,
+#         email String NOT NULL,
+#         phoneno Integer NOT NULL,
+#         password String NOT NULL,
+
+
+#         )""")
+
+
+
+        #-----------------------      passing username through argyument     --------------------
+
+parser = ArgumentParser()
+parser.add_argument("-u", "--user")
+
+args = vars(parser.parse_args())
+user = args['user']
 
 
 
@@ -41,6 +72,7 @@ def run_login():
 
 def back_home():
 
+
     for ele in main_frame.winfo_children():
         ele.destroy()
 
@@ -49,6 +81,46 @@ def back_home():
 
 
         #---------------        Cart    ------------------------------------
+
+def buy_product(product_info,product_price):
+        messagebox.showinfo("Product","Prdouct will be delivered soon")
+
+
+
+
+
+
+        product_database=sqlite3.connect("product.db")
+        product_cursor=product_database.cursor()
+
+        # product_cursor.execute("""
+
+        #         CREATE TABLE product_table (username TEXT,product_information TEXT,product_cost TEXT)
+
+        # """)
+
+        product_cursor.execute("INSERT INTO product_table VALUES (:username, :product_information, :product_cost)",
+        
+                {
+
+                        "username":user,
+                        "product_information":product_info,
+                        "product_cost":product_price
+
+                }
+        
+        )
+
+        product_database.commit()
+        product_database.close()
+
+
+
+        for ele in main_frame.winfo_children():
+                ele.destroy()
+
+        mainframe()
+
 
 
 def cart_window(product_image,product_price,product_info):
@@ -72,23 +144,39 @@ def cart_window(product_image,product_price,product_info):
 
         my_canvas.create_window((0, 0), window=second_frame)
 
-        
-        
+        passed_image = Label(second_frame, image=product_image, bg="white", borderwidth=0)
+        passed_image.grid(row=0,column=0,ipadx=40,ipady=70,rowspan=10)
 
+        passed_image_price=Label(second_frame,text=product_price)
+        passed_image_price.grid(row=1,column=0)
+
+        passed_image_info=Label(second_frame,text=product_info)
+        passed_image_info.grid(row=2,column=0)
+
+        
+        
 
 def cart_frame(product_image,product_price,product_info):
-    for ele in main_frame.winfo_children():
-        ele.destroy()
+        for ele in main_frame.winfo_children:
+                ele.destroy()
+        
+        cart_window(product_image,product_price,product_info)
 
-    cart_window(product_image,product_price,product_info)
 
 
         #-----------------------     Cart     --------------------------- 
 
 
                 #------------------      adding cart function        ----------------- 
-def add_to_cart():
+def add_to_cart_message():
+
         messagebox.showinfo("ITEM","Product added to cart sucessfully")
+
+        for ele in main_frame.winfo_children():
+                ele.destroy()
+
+        mainframe()
+
 
 
 
@@ -146,10 +234,10 @@ def ball_details_mainframe(product_image,product_price,product_info):
         vsmall=Button(second_frame,text="5",bg="black",fg="white",command=lambda : size_value("5"))
         vsmall.grid(row=4,column=4)
 
-        buy_now=Button(second_frame,text="Buy Now",bg="black",fg="white")
+        buy_now=Button(second_frame,text="Buy Now",bg="black",fg="white",command=lambda: buy_product(product_info,product_price))
         buy_now.grid(row=5,column=1,columnspan=1)
 
-        add_to_cart=Button(second_frame,text="Add  to cart",bg="black",fg="white")
+        add_to_cart=Button(second_frame,text="Add  to cart",bg="black",fg="white",command=add_to_cart_message)
         add_to_cart.grid(row=5,column=2,columnspan=1)
 
 
@@ -215,10 +303,10 @@ def details_mainframe(product_image,product_price,product_info):
         small=Button(second_frame,text="small",bg="black",fg="white",command=lambda : size_value("S"))
         small.grid(row=4,column=3)
 
-        buy_now=Button(second_frame,text="Buy Now",bg="black",fg="white")
+        buy_now=Button(second_frame,text="Buy Now",bg="black",fg="white",command=lambda: buy_product(product_info,product_price))
         buy_now.grid(row=5,column=1,columnspan=1)
 
-        add_to_cart=Button(second_frame,text="Add  to cart",bg="black",fg="white")
+        add_to_cart=Button(second_frame,text="Add  to cart",bg="black",fg="white",command=add_to_cart_message)
         add_to_cart.grid(row=5,column=2,columnspan=1)
 
 
@@ -1112,37 +1200,6 @@ def f_Basketball_window():
 
 
 
-#=====================================        Database        ================================================================
-
-conn=sqlite3.connect('register.db')
-
-c=conn.cursor()
-
-
-
-
-        #--------------------        Table for database       -------------------
-
-# c.execute(""" CREATE TABLE login(
-        
-#         name String NOT NULL,
-#         username String PRIMARY KEY,
-#         email String NOT NULL,
-#         phoneno Integer NOT NULL,
-#         password String NOT NULL
-
-#         )""")
-
-      
-
-
-        #-----------------------      passing username through argyument     --------------------
-
-parser = ArgumentParser()
-parser.add_argument("-u", "--user")
-
-args = vars(parser.parse_args())
-user = args['user']
 
 
 
