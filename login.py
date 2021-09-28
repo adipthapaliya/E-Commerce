@@ -12,6 +12,7 @@ root=Tk()
 root.title("LOGIN")
 root.geometry('400x580')
 root.resizable(FALSE, FALSE)
+root.iconbitmap("Home/logo.ico")
 
 conn=sqlite3.connect('register.db')
 
@@ -45,7 +46,7 @@ def run_admin():
 def open(user):
    
    root.destroy()
-   subprocess.call(["python","new_home.py", "--user", user[1]])
+   subprocess.call(["python","home.py", "--user", user[1]])
    
 
 def login():

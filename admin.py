@@ -6,7 +6,9 @@ root=Tk()
 root.title("Product details")
 root.geometry('400x580')
 root.resizable(FALSE, FALSE)
+root.iconbitmap("Home/logo.ico")
 
+#===================================         function to show customer details       ===========================================
 
 
 def show_details():
@@ -14,7 +16,6 @@ def show_details():
 
     c=conn.cursor()
 
-    #######table
 
     # c.execute(""" CREATE TABLE login(
             
@@ -34,6 +35,7 @@ def show_details():
     for customer in customer_details:
         newwin=Toplevel(root)
         newwin.title("Details")
+        newwin.iconbitmap("Home/logo.ico")
         
 
         username_label=Label(newwin,text="Username")
@@ -60,7 +62,8 @@ def show_details():
     conn.close()
 
 
-        #------------------     database for product          -------------------------------
+
+#========================================     database for product to delivered       ========================================
 
 product_database=sqlite3.connect("product.db")
 product_cursor=product_database.cursor()
@@ -72,6 +75,7 @@ product_cursor=product_database.cursor()
 # """)
 
 
+#---------------------------------      GUI for order   -----------------------------------------
 number=Label(root,text="S/N")
 number.grid(row=1,column=0)
 
@@ -108,7 +112,7 @@ for record in records:
 
     i+=1
 
-#--------------------------------------     frame for search bar    ----------------------
+#--------------------------------------     frame for search bar of username       ------------------------------------
 
 search_frame=Frame(root)
 search_frame.grid(row=0,column=0,columnspan=4,pady=10)
@@ -116,7 +120,7 @@ search_frame.grid(row=0,column=0,columnspan=4,pady=10)
 username_label=Label(search_frame,text="Username")
 username_label.grid(row=0,column=0)
 
-global show_username_entry
+
 
 show_username_entry=Entry(search_frame)
 show_username_entry.grid(row=0,column=1,padx=30,pady=10)

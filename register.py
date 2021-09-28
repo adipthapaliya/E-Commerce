@@ -8,8 +8,11 @@ root=Tk()
 root.title('Register')
 root.geometry('400x580')
 root.resizable(False, False)
+root.iconbitmap("Home/logo.ico")
 
-#==============================================Database=============================================================
+
+
+#==============================================       Database for register          ============================================================
 
 
 conn=sqlite3.connect('register.db')
@@ -28,12 +31,15 @@ c=conn.cursor()
 
 
 #         )""")
+
+    #-------------------------    register file     -----------------------
+    
 def run_register():
    root.destroy()
    subprocess.call(["python","register.py"])
 
 
-
+    #-------------------------      login file      ----------------------------
 def run_login():
     root.destroy()
     subprocess.call(["python","login.py"])

@@ -19,6 +19,45 @@ root.title("SOD")
 root.state("zoomed")
 root.resizable(False,False)
 root.config(bg="#ffffff")
+root.iconbitmap("Home/logo.ico")
+
+
+#=====================================        Database        ================================================================
+
+conn=sqlite3.connect('register.db')
+
+c=conn.cursor()
+
+
+
+
+        #--------------------        Table for database       -------------------
+
+# c.execute(""" CREATE TABLE login(
+        
+#         name String NOT NULL,
+#         username String PRIMARY KEY,
+#         email String NOT NULL,
+#         phoneno Integer NOT NULL,
+#         password String NOT NULL,
+
+
+#         )""")
+
+
+
+        #-----------------------      passing username through argyument     --------------------
+
+parser = ArgumentParser()
+parser.add_argument("-u", "--user")
+
+args = vars(parser.parse_args())
+user = args['user']
+
+
+
+
+
 
 #========================================     ALL Funtions     ============================================================
 
@@ -34,6 +73,7 @@ def run_login():
 
 def back_home():
 
+
     for ele in main_frame.winfo_children():
         ele.destroy()
 
@@ -43,54 +83,106 @@ def back_home():
 
         #---------------        Cart    ------------------------------------
 
-
-# def cart_window(product_image,product_price,product_info):
-
-#         global main_frame
-
-#         main_frame = Frame(root,bg="#ffffff")
-#         main_frame.place(x=0, y=90)
-
-#         my_canvas = Canvas(main_frame, width=1500, height=740,bg="#ffffff")
-#         my_canvas.pack(side=LEFT, fill=BOTH)
-
-#         my_scrollbar = ttk.Scrollbar(main_frame, orient=VERTICAL, command=my_canvas.yview)
-#         my_scrollbar.pack(side=RIGHT, padx=5, fill=Y)
-
-#         my_canvas.configure(yscrollcommand=my_scrollbar.set)
-#         my_canvas.bind('<Configure>', lambda e: my_canvas.configure(scrollregion=my_canvas.bbox("all")))        
-
-#         second_frame = Frame(my_canvas, width=1500, height=740,bg="#ffffff")
+def buy_product(product_info,product_price):
+        messagebox.showinfo("Product","Prdouct will be delivered soon")
 
 
-#         my_canvas.create_window((0, 0), window=second_frame)
 
-#         b1 = Label(second_frame, image=product_image, bg="white", borderwidth=0)
-#         b1.grid(row=1,column=0)
-#         price=Label(second_frame,text=product_price)
-#         price.grid(row=2,column=0)
-#         l11=Label(second_frame,text=product_info)
-#         l11.grid(row=3,column=0)
+
+
+
+        product_database=sqlite3.connect("product.db")
+        product_cursor=product_database.cursor()
+
+        # product_cursor.execute("""
+
+        #         CREATE TABLE product_table (username TEXT,product_information TEXT,product_cost TEXT)
+
+        # """)
+
+        product_cursor.execute("INSERT INTO product_table VALUES (:username, :product_information, :product_cost)",
+        
+                {
+
+                        "username":user,
+                        "product_information":product_info,
+                        "product_cost":product_price
+
+                }
+        
+        )
+
+        product_database.commit()
+        product_database.close()
+
+
+
+        for ele in main_frame.winfo_children():
+                ele.destroy()
+
+        mainframe()
+
+
+
+def cart_window(product_image,product_price,product_info):
+
+        global main_frame
+
+        main_frame = Frame(root,bg="#ffffff")
+        main_frame.place(x=0, y=90)
+
+        my_canvas = Canvas(main_frame, width=1500, height=740,bg="#ffffff")
+        my_canvas.pack(side=LEFT, fill=BOTH)
+
+        my_scrollbar = ttk.Scrollbar(main_frame, orient=VERTICAL, command=my_canvas.yview)
+        my_scrollbar.pack(side=RIGHT, padx=5, fill=Y)
+
+        my_canvas.configure(yscrollcommand=my_scrollbar.set)
+        my_canvas.bind('<Configure>', lambda e: my_canvas.configure(scrollregion=my_canvas.bbox("all")))        
+
+        second_frame = Frame(my_canvas, width=1500, height=740,bg="#ffffff")
+
+
+        my_canvas.create_window((0, 0), window=second_frame)
+
+        passed_image = Label(second_frame, image=product_image, bg="white", borderwidth=0)
+        passed_image.grid(row=0,column=0,ipadx=40,ipady=70,rowspan=10)
+
+        passed_image_price=Label(second_frame,text=product_price)
+        passed_image_price.grid(row=1,column=0)
+
+        passed_image_info=Label(second_frame,text=product_info)
+        passed_image_info.grid(row=2,column=0)
+
+        
         
 
+def cart_frame(product_image,product_price,product_info):
+        for ele in main_frame.winfo_children:
+                ele.destroy()
+        
+        cart_window(product_image,product_price,product_info)
 
-# def cart_frame(product_image,product_price,product_info):
-#     for ele in main_frame.winfo_children():
-#         ele.destroy()
-
-#     cart_window(product_image,product_price,product_info)
 
 
         #-----------------------     Cart     --------------------------- 
 
 
                 #------------------      adding cart function        ----------------- 
-def add_to_cart():
+def add_to_cart_message():
+
         messagebox.showinfo("ITEM","Product added to cart sucessfully")
+
+        for ele in main_frame.winfo_children():
+                ele.destroy()
+
+        mainframe()
+
 
 
 
         #--------------   Product Details Function ----------------------
+
 
 def ball_details_mainframe(product_image,product_price,product_info):
 
@@ -124,10 +216,10 @@ def ball_details_mainframe(product_image,product_price,product_info):
         passed_image.grid(row=0,column=0,ipadx=40,ipady=70,rowspan=10)
 
         passed_image_price=Label(second_frame,text=product_price)
-        passed_image_price.grid(row=1,column=1,columnspan=4)
+        passed_image_price.grid(row=1,column=1,columnspan=5)
 
         passed_image_info=Label(second_frame,text=product_info)
-        passed_image_info.grid(row=2,column=1,columnspan=4)
+        passed_image_info.grid(row=2,column=1,columnspan=5)
 
         size_label=Label(second_frame,text="Size")
         size_label.grid(row=3,column=1)
@@ -143,8 +235,12 @@ def ball_details_mainframe(product_image,product_price,product_info):
         vsmall=Button(second_frame,text="5",bg="black",fg="white",command=lambda : size_value("5"))
         vsmall.grid(row=4,column=4)
 
-        add_to_cart=Button(second_frame,text="Add  to cart",bg="black",fg="white")
-        add_to_cart.grid(row=5,column=1,columnspan=4)
+        buy_now=Button(second_frame,text="Buy Now",bg="black",fg="white",command=lambda: buy_product(product_info,product_price))
+        buy_now.grid(row=5,column=1,columnspan=1)
+
+        add_to_cart=Button(second_frame,text="Add  to cart",bg="black",fg="white",command=add_to_cart_message)
+        add_to_cart.grid(row=5,column=2,columnspan=1)
+
 
 
 
@@ -156,6 +252,8 @@ def ball_description(product_image,product_price,product_info):
         ele.destroy()
 
     ball_details_mainframe(product_image,product_price,product_info)
+
+
 
 def details_mainframe(product_image,product_price,product_info):
 
@@ -189,10 +287,10 @@ def details_mainframe(product_image,product_price,product_info):
         passed_image.grid(row=0,column=0,ipadx=40,ipady=70,rowspan=10)
 
         passed_image_price=Label(second_frame,text=product_price)
-        passed_image_price.grid(row=1,column=1,columnspan=3)
+        passed_image_price.grid(row=1,column=1,columnspan=5)
 
         passed_image_info=Label(second_frame,text=product_info)
-        passed_image_info.grid(row=2,column=1,columnspan=3)
+        passed_image_info.grid(row=2,column=1,columnspan=5)
 
         size_label=Label(second_frame,text="Size")
         size_label.grid(row=3,column=1)
@@ -206,8 +304,11 @@ def details_mainframe(product_image,product_price,product_info):
         small=Button(second_frame,text="small",bg="black",fg="white",command=lambda : size_value("S"))
         small.grid(row=4,column=3)
 
-        add_to_cart=Button(second_frame,text="Add  to cart",bg="black",fg="white")
-        add_to_cart.grid(row=5,column=1,columnspan=3)
+        buy_now=Button(second_frame,text="Buy Now",bg="black",fg="white",command=lambda: buy_product(product_info,product_price))
+        buy_now.grid(row=5,column=1,columnspan=1)
+
+        add_to_cart=Button(second_frame,text="Add  to cart",bg="black",fg="white",command=add_to_cart_message)
+        add_to_cart.grid(row=5,column=2,columnspan=1)
 
 
 
@@ -583,8 +684,6 @@ def search_frame():
 
                 
                         
-
-
 def search_window():
 
         if search_entry.get()=="":
@@ -595,6 +694,8 @@ def search_window():
                         ele.destroy()
 
                 search_frame()
+
+
 
 
 def ball_frame():
@@ -720,6 +821,7 @@ def ball_window():
     ball_frame()
 
 
+
 def men_football_frame():
 
         global main_frame
@@ -797,7 +899,7 @@ def men_football_frame():
         l44=Label(second_frame,text="Addidas Bayern Munich Jersy(Red)")
         l44.grid(row=6,column=2)
 
-        b7 = Button(second_frame, image=F8, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(F8,"Rs 2500","Addidas Bayern Munich Jersy(Red)"))
+        b7 = Button(second_frame, image=F8, bg="white", relief=GROOVE,borderwidth=0,command=lambda : description(F8,"Rs 2500","Nike Liverpool Jersey (Red)"))
         b7.grid(row=1,column=4)
         price=Label(second_frame,text="Rs 2500")
         price.grid(row=2,column=4)
@@ -817,6 +919,8 @@ def m_football_window():
             ele.destroy()
 
         men_football_frame()
+
+
 
 def female_football_frame():
         
@@ -905,9 +1009,6 @@ def female_football_frame():
         l55=Label(second_frame,text="Addidas Belgium Home Jersey(Red)")
         l55.grid(row=3,column=3)
 
-
-
-
 def f_football_window():
 
         for ele in main_frame.winfo_children():
@@ -991,15 +1092,12 @@ def Basketball_frame():
         l55.grid(row=3,column=3)
 
        
-
-
 def mf_Basketball_window():
 
         for ele in main_frame.winfo_children():
             ele.destroy()
 
         Basketball_frame()
-
 
 
 
@@ -1102,44 +1200,6 @@ def f_Basketball_window():
 
 
 
-
-
-
-
-
-
-
-#=====================================        Database        ================================================================
-
-conn=sqlite3.connect('register.db')
-
-c=conn.cursor()
-
-
-
-
-        #--------------------        Table for database       -------------------
-
-# c.execute(""" CREATE TABLE login(
-        
-#         name String NOT NULL,
-#         username String PRIMARY KEY,
-#         email String NOT NULL,
-#         phoneno Integer NOT NULL,
-#         password String NOT NULL
-
-#         )""")
-
-      
-
-
-        #-----------------------      passing username through argyument     --------------------
-
-parser = ArgumentParser()
-parser.add_argument("-u", "--user")
-
-args = vars(parser.parse_args())
-user = args['user']
 
 
 
@@ -1403,9 +1463,6 @@ FB6 = ImageTk.PhotoImage(FB6)
 
 
 
-
-
-
         #------------------------   Headlines    ------------------------------
 
 logo_button=Button(root,image=logo_img,borderwidth=0,command=back_home)
@@ -1417,7 +1474,7 @@ search_entry.place(x=320,y=0,height=50)
 search_button=Button(root,image=search_img,borderwidth=0,command=search_window)
 search_button.place(x=1160,y=0)
 
-cart_button=Button(root,image=cart_img,borderwidth=0)
+cart_button=Button(root,image=cart_img,borderwidth=0,command=cart_frame)
 cart_button.place(x=1250,y=0)
 
 contact_button=Button(root,image=contact_img,borderwidth=0)
@@ -1635,6 +1692,8 @@ def mainframe():
 
 
 mainframe()
+
+
 
 
 
