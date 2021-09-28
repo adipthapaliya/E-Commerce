@@ -1214,7 +1214,7 @@ def f_Basketball_window():
 
 logo=Image.open("Home\sw.png")
 search=Image.open("Home\search.png")
-profile=Image.open("Home\profile.png")
+profile=Image.open("Home\profiles.ico")
 contact=Image.open("Home\contact.png")
 cart=Image.open("Home\cart.png")
 
