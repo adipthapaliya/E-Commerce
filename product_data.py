@@ -10,7 +10,7 @@ product_cursor=product_database.cursor()
 
 #         CREATE TABLE product_table (username TEXT,product_information TEXT,product_cost TEXT)
 
-# """)
+#   """)
 
 product_database.commit()
 product_database.close()

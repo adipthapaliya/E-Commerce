@@ -111,7 +111,7 @@ username_entry.place(x=4,y=120)
 
 password_label=Label(root,text="Password",font=(Canvas,12))
 password_label.place(x=4,y=150)
-password_entry=Entry(root,font=Canvas,bg="#E1D9D1",width=35)
+password_entry=Entry(root,font=Canvas,bg="#E1D9D1",width=35,show="*")
 password_entry.place(x=4,y=180)
 
 forget_password_button=Button(root,text="forget password ?",borderwidth=0,fg="green")

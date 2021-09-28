@@ -152,7 +152,7 @@ phoneno_entry.place(x=4,y=440)
 
 password_label=Label(root,text="Password",font=(Canvas,12))
 password_label.place(x=4,y=470)
-password_entry=Entry(root,font=Canvas,bg="#E1D9D1",width=35)
+password_entry=Entry(root,font=Canvas,bg="#E1D9D1",width=35,show="*")
 password_entry.place(x=4,y=495)
 
 
